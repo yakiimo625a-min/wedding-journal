@@ -176,7 +176,8 @@ td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-n
 @media (max-width:900px){.quick{grid-template-columns:1fr 1fr}.quick input[name=item]{grid-column:1/-1}}
 
 /* modal */
-dialog{border:0;padding:0;border-radius:16px;box-shadow:var(--shadow);width:min(560px,calc(100vw - 32px));max-height:calc(100vh - 48px)}
+dialog{border:0;padding:0;border-radius:16px;box-shadow:var(--shadow);width:min(560px,calc(100vw - 32px));max-height:calc(100vh - 48px);overflow:auto}
+dialog.wide{width:min(820px,calc(100vw - 32px))}
 dialog::backdrop{background:rgba(26,26,26,.6)}
 .m-head{display:flex;justify-content:space-between;align-items:center;padding:20px 24px 4px}
 .m-head h2{margin:0;font-size:20px;font-weight:700}
@@ -304,6 +305,64 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:13px;color
 .compare thead th{font-size:16px;color:var(--ink)}
 .compare td{vertical-align:top;font-size:14px;line-height:1.55;min-width:180px}
 .compare td.out{color:var(--ink-3)}
+/* quotes */
+.venues{grid-template-columns:1fr !important;gap:32px}
+.venue-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.venue-head > div:first-child{display:flex;flex-direction:column;gap:8px}
+.venue-actions{display:flex;gap:8px;flex-wrap:wrap}
+.hall{font-weight:500;color:var(--ink-2);font-size:18px}
+table.quote{min-width:560px;font-size:14px}
+table.quote thead th{background:var(--ink);color:#fff;font-size:14px;font-weight:600;text-align:center;border-bottom:0;padding:12px 10px}
+table.quote thead th:first-child{text-align:left;width:150px}
+table.quote thead .row-btn{font-weight:600;display:flex;flex-direction:column;align-items:center;gap:2px}
+table.quote thead .qv{font-size:12px;font-weight:500;opacity:.8}
+table.quote tbody th{text-align:left;font-weight:600;font-size:13px;color:var(--ink);background:var(--sunken);border-bottom:1px solid var(--line);white-space:nowrap;padding:12px 10px}
+table.quote td{text-align:center;padding:12px 10px;min-width:170px;line-height:1.5;font-variant-numeric:tabular-nums}
+table.quote tr.sum td,table.quote tr.sum th{background:#FAF6F1}
+table.quote tr.total td,table.quote tr.total th{background:#FFF1E2;border-bottom:1px solid var(--ink)}
+table.quote .final{font-size:16px}
+table.quote td.best{box-shadow:inset 0 0 0 2px var(--positive)}
+table.quote td.out{color:var(--ink-3)}
+table.quote .sub{font-size:12px;color:var(--ink-3);margin-top:2px}
+table.quote .sub.save{color:var(--positive);font-weight:600}
+.strike{text-decoration:line-through;color:var(--ink-3);margin-right:4px}
+.v-pc{grid-template-columns:repeat(auto-fit,minmax(200px,1fr)) !important}
+fieldset.dt{border:1px solid var(--line);border-radius:12px;padding:12px 16px 16px;margin:0}
+fieldset.dt legend{font-size:14px;font-weight:600;padding:0 6px}
+.dt-out{font-weight:700;color:var(--accent);margin-left:6px}
+.dt-grid{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:20px;align-items:start}
+@media (max-width:620px){.dt-grid{grid-template-columns:1fr}}
+.mc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.mc-head strong{font-size:15px}
+.mc-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.mc-dow{font-size:12px;color:var(--ink-3);padding:4px 0}
+.mc-day{height:38px;border:0;border-radius:8px;background:transparent;font-weight:500;cursor:pointer;font-variant-numeric:tabular-nums}
+.mc-day:hover{background:var(--line-soft)}
+.mc-dow.sun,.mc-day.sun{color:var(--warn)}
+.mc-dow.sat,.mc-day.sat{color:var(--benefit)}
+.mc-day.today{box-shadow:inset 0 0 0 1px var(--ink-3)}
+.mc-day.cand{box-shadow:inset 0 -3px 0 var(--accent)}
+.mc-day.sel{background:var(--ink);color:#fff;box-shadow:none}
+.wheels{display:flex;flex-direction:column;align-items:center;gap:8px}
+.wheel-box{position:relative;display:flex;align-items:center;gap:4px;height:200px;padding:0 8px;border-radius:12px;background:var(--sunken)}
+.wheel{height:200px;width:64px;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;position:relative;z-index:1;-webkit-mask-image:linear-gradient(transparent,#000 30%,#000 70%,transparent);mask-image:linear-gradient(transparent,#000 30%,#000 70%,transparent);border-radius:8px}
+.wheel::-webkit-scrollbar{display:none}
+.wheel:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wheel-pad{height:80px}
+.wheel-opt{height:40px;display:flex;align-items:center;justify-content:center;scroll-snap-align:center;font-size:20px;font-weight:500;color:var(--ink-3);cursor:pointer;font-variant-numeric:tabular-nums}
+.wheel-opt[aria-selected="true"]{color:var(--ink);font-weight:700;font-size:22px}
+.wheel-band{position:absolute;left:8px;right:8px;top:80px;height:40px;border-radius:8px;background:#fff;box-shadow:var(--inset);z-index:0}
+.colon{font-size:22px;font-weight:700;z-index:1}
+.q-group{display:flex;flex-direction:column;gap:10px;padding-top:12px;border-top:1px solid var(--line)}
+.q-group h3{margin:0;font-size:15px;font-weight:700}
+.q-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.field.num{text-align:right;font-variant-numeric:tabular-nums}
+.q-calc{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--ink);padding:12px 0 4px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.q-calc div{display:flex;flex-direction:column;gap:2px}
+.q-calc span{font-size:12px;color:var(--ink-3)}
+.q-calc b{font-size:16px;font-variant-numeric:tabular-nums}
+.q-calc .f b{color:var(--accent);font-size:18px}
+@media (max-width:520px){.q-calc{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
@@ -327,7 +386,8 @@ const SCHEMA = {
   expenses: ['id','budgetId','item','amount','kind','date','memo'],
   tasks:    ['id','title','due','done','phase'],
   events:   ['id','title','date','time','note'],
-  venues:   ['id','name','location','hallType','status','rating','visitDate','guarantee','mealPrice','rental','extras','dates','pros','cons','url','memo'],
+  venues:   ['id','name','location','hallType','status','rating','visitDate','guarantee','mealPrice','rental','extras','dates','pros','cons','url','memo','hall','ceremonyType'],
+  quotes:   ['id','venueId','label','date','time','guarantee','deposit','mealBase','mealPromo','kidMeal','drinkBase','drinkPromo','drinkNote','rentalBase','rentalPromo','optionBase','optionPromo','optionNote','cashback','promoNote'],
   settings: ['id','value']
 };
 const CATS = ['웨딩홀','스드메','예물·예단','신혼여행','혼수·가전','정책·지원','신혼집','기타'];
@@ -338,7 +398,17 @@ const KINDS = ['계약금','중도금','잔금','전액'];
 const HALL_TYPES = ['일반홀','단독홀','호텔','하우스·가든','채플','스몰·레스토랑'];
 const VENUE_STATUS = ['관심','투어 예정','투어 완료','가계약','계약','제외'];
 const VENUE_TONE = { '관심':'', '투어 예정':'benefit', '투어 완료':'benefit', '가계약':'positive', '계약':'primary', '제외':'' };
-const venueTotal = (v) => num(v.guarantee) * num(v.mealPrice) + num(v.rental) + num(v.extras);
+const CEREMONY_TYPES = ['분리예식','동시예식','기타'];
+const val = (x) => x === '' || x === null || x === undefined ? null : num(x);
+const promoOr = (base, promo) => val(promo) !== null ? val(promo) : (val(base) || 0);
+function quoteCalc(q) {
+  const g = num(q.guarantee);
+  const mealSub = g * promoOr(q.mealBase, q.mealPromo);
+  const base = g * (val(q.mealBase) || 0) + g * (val(q.drinkBase) || 0) + (val(q.rentalBase) || 0) + (val(q.optionBase) || 0);
+  const final = mealSub + g * promoOr(q.drinkBase, q.drinkPromo) + promoOr(q.rentalBase, q.rentalPromo) + promoOr(q.optionBase, q.optionPromo);
+  return { mealSub, base, final };
+}
+const wonFull = (n) => Math.round(num(n)).toLocaleString('ko-KR') + '원';
 const PHASES = [
   { k:'p1', name:'준비 시작', when:'D-12~10개월', months:10 },
   { k:'p2', name:'주요 업체 예약', when:'D-9~7개월', months:7 },
@@ -414,10 +484,10 @@ let toastTimer;
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 2600); }
 
 /* ---------- data layer ---------- */
-const LOCAL_KEY = 'weddingHub.demo.v2';
+const LOCAL_KEY = 'weddingHub.demo.v3';
 const TOKEN_KEY = 'weddingHub.token';
 const isLive = () => !!CONFIG.API_URL;
-let DB = { archive:[], budget:[], expenses:[], tasks:[], events:[], venues:[], settings:[] };
+let DB = { archive:[], budget:[], expenses:[], tasks:[], events:[], venues:[], quotes:[], settings:[] };
 
 function seedDemo() {
   const d = (off) => { const x = new Date(); x.setDate(x.getDate() + off); return x.toISOString().slice(0,10); };
@@ -449,8 +519,11 @@ function seedDemo() {
       {id:'v3',title:'웨딩 박람회',date:d(32),time:'',note:'스드메 견적'}
     ],
     venues: [
-      {id:'w1',name:'후보 A (예시)',location:'서울 성수',hallType:'단독홀',status:'투어 완료',rating:'4',visitDate:d(-3),guarantee:'150',mealPrice:'72000',rental:'3000000',extras:'1500000',dates:'2027.6.5 토 12시 가능',pros:'채광이 좋음\n하객 동선이 짧음',cons:'주차 50대로 부족\n식대 인상 가능성',url:'',memo:'예시 데이터'},
-      {id:'w2',name:'후보 B (예시)',location:'서울 강남',hallType:'호텔',status:'투어 예정',rating:'3',visitDate:d(11),guarantee:'200',mealPrice:'110000',rental:'0',extras:'4000000',dates:'',pros:'교통이 편함',cons:'보증인원이 큼',url:'',memo:'예시 데이터'}
+      {id:'w1',name:'아펠가모 광화문점',hall:'LL층',ceremonyType:'분리예식',location:'서울 광화문',hallType:'일반홀',status:'투어 완료',rating:'4',visitDate:d(-1),pros:'',cons:'',url:'',memo:'예시 데이터'}
+    ],
+    quotes: [
+      {id:'q1',venueId:'w1',label:'타임 1',date:'2027-06-26',time:'14:00',guarantee:250,deposit:4000000,mealBase:110000,mealPromo:82500,kidMeal:42900,drinkBase:8800,drinkPromo:0,drinkNote:'프로모션 무료 서비스',rentalBase:11000000,rentalPromo:7700000,optionBase:660000,optionPromo:0,optionNote:'플라워샤워(생화 220,000원 → 무료), 양가모 메이크업(440,000원 → 무료)',cashback:'',promoNote:'브랜드 대상 대관료 50% 추가 할인, 신라호텔 숙박권 증정, 당일계약 프로모션(양가모 2인 뷰티, 플라워샤워)'},
+      {id:'q2',venueId:'w1',label:'타임 2',date:'2027-11-20',time:'14:00',guarantee:300,deposit:4000000,mealBase:110000,mealPromo:96800,kidMeal:42900,drinkBase:8800,drinkPromo:0,drinkNote:'프로모션 무료 서비스',rentalBase:11000000,rentalPromo:9020000,optionBase:660000,optionPromo:0,optionNote:'플라워샤워(무료), 양가모 메이크업(무료), 27년 얼리버드 프로모션(100만원 캐시백/할인)',cashback:1000000,promoNote:'비공식 얼리버드 프로모션(부대+식대 100만원 추가 할인), 당일계약 프로모션'}
     ],
     archive: [
       {id:'a1',title:'웨딩홀 투어 체크리스트 — 보증인원, 식대, 주차',url:'',image:'',category:'웨딩홀',source:'네이버 블로그',status:'검토 완료',memo:'투어 갈 때 그대로 들고 가기.',savedAt:d(-2)},
@@ -465,11 +538,11 @@ const store = {
   async load() {
     if (!isLive()) {
       const raw = localStorage.getItem(LOCAL_KEY);
-      DB = Object.assign({ venues: [] }, raw ? JSON.parse(raw) : seedDemo());
+      DB = Object.assign({ venues: [], quotes: [] }, raw ? JSON.parse(raw) : seedDemo());
       return;
     }
     const res = await api({ action: 'all' });
-    DB = Object.assign({ archive:[], budget:[], expenses:[], tasks:[], events:[], venues:[], settings:[] }, res.data);
+    DB = Object.assign({ archive:[], budget:[], expenses:[], tasks:[], events:[], venues:[], quotes:[], settings:[] }, res.data);
   },
   async upsert(sheet, row) {
     const list = DB[sheet]; const i = list.findIndex(r => r.id === row.id);
@@ -775,88 +848,226 @@ function stars(n) {
   return `<span class="stars" role="img" aria-label="별점 ${n}점">${[1,2,3,4,5].map(i => star(i <= n)).join('')}</span>`;
 }
 function venuesHtml() {
-  const lines = (t) => String(t || '').split(/\n|·/).map(x => x.trim()).filter(Boolean);
+  const lines = (t) => String(t || '').split(/\n/).map(x => x.trim()).filter(Boolean);
+  const quotesOf = (v) => DB.quotes.filter(q => q.venueId === v.id).sort((a, b) => (a.date || '9999').localeCompare(b.date || '9999') || String(a.time || '').localeCompare(String(b.time || '')) || String(a.label).localeCompare(String(b.label)));
+  const minFinal = (v) => { const t = quotesOf(v).map(q => quoteCalc(q).final).filter(Boolean); return t.length ? Math.min(...t) : 0; };
   const sorters = {
-    total: (a, b) => (venueTotal(a) || 1e15) - (venueTotal(b) || 1e15),
+    total: (a, b) => (minFinal(a) || 1e15) - (minFinal(b) || 1e15),
     rating: (a, b) => num(b.rating) - num(a.rating),
-    meal: (a, b) => (num(a.mealPrice) || 1e12) - (num(b.mealPrice) || 1e12)
+    recent: (a, b) => String(b.visitDate || '').localeCompare(String(a.visitDate || ''))
   };
   const list = [...DB.venues].sort((a, b) => (a.status === '제외') - (b.status === '제외') || sorters[ui.venueSort](a, b));
   const active = list.filter(v => v.status !== '제외');
-  const totals = active.map(venueTotal).filter(Boolean);
-  const minT = totals.length ? Math.min(...totals) : 0;
-  const best = active.length ? Math.max(...active.map(v => num(v.rating))) : 0;
+  const allQ = active.flatMap(v => quotesOf(v).map(q => ({ v, q, c: quoteCalc(q) })));
+  const bestFinal = allQ.length ? Math.min(...allQ.map(x => x.c.final).filter(Boolean)) : 0;
   const tag = (s) => `<span class="badge ${VENUE_TONE[s] || ''}">${esc(s || '관심')}</span>`;
 
   const head = `<section class="cl-hero">
       <div>
         <span class="eyebrow">Venues</span>
-        <h1>웨딩홀 비교 노트</h1>
-        <p>투어한 웨딩홀의 견적과 느낌을 같은 기준으로 적어 두고 나란히 비교해요. 예상 총액은 보증인원 × 식대 + 대관료 + 기타 비용으로 계산돼요.</p>
+        <h1>웨딩홀 견적 비교</h1>
+        <p>웨딩홀마다 받은 견적을 타임별로 기록해요. 식대 소계, 총 기본 견적, 최종 프로모션 견적은 입력한 단가로 자동 계산돼요.</p>
       </div>
       <div style="display:flex;justify-content:flex-end"><button class="btn" data-act="new" data-sheet="venues">${icon('plus')}웨딩홀 추가</button></div>
     </section>`;
+  if (!list.length) return `<div class="wrap cl">${head}<div class="empty">아직 기록한 웨딩홀이 없어요. 상담받은 웨딩홀을 추가하고 타임별 견적을 넣어 보세요.<br><button class="btn" data-act="new" data-sheet="venues">${icon('plus')}첫 웨딩홀 추가하기</button></div></div>`;
 
-  if (!list.length) return `<div class="wrap cl">${head}<div class="empty">아직 기록한 웨딩홀이 없어요. 투어 예정이거나 관심 있는 곳부터 추가해 보세요.<br><button class="btn" data-act="new" data-sheet="venues">${icon('plus')}첫 웨딩홀 추가하기</button></div></div>`;
+  const W = (n) => n === null || n === undefined || n === '' ? '—' : wonFull(n);
+  const priceRow = (base, promo) => {
+    const b = val(base), p = val(promo);
+    if (b === null && p === null) return '—';
+    if (p === null || p === b) return wonFull(b);
+    return `<span class="strike">${b === null ? '' : wonFull(b)}</span> ${wonFull(p)}`;
+  };
+  const ROWS = [
+    ['예식일시', q => `<b>${esc(fmtDT(q.date, q.time) || '—')}</b>`],
+    ['지불보증인원', q => num(q.guarantee) ? `${num(q.guarantee).toLocaleString('ko-KR')}명` : '—'],
+    ['계약금', q => W(val(q.deposit))],
+    ['식대 기본단가', q => W(val(q.mealBase))],
+    ['식대 프로모션 단가', q => W(val(q.mealPromo))],
+    ['소인 식대', q => W(val(q.kidMeal))],
+    ['식대 소계', q => `<b>${W(quoteCalc(q).mealSub || null)}</b>`, 'sum'],
+    ['음주류 (1인)', q => `${priceRow(q.drinkBase, q.drinkPromo)}${q.drinkNote ? `<div class="sub">${esc(q.drinkNote)}</div>` : ''}`],
+    ['대관료 기본단가', q => W(val(q.rentalBase))],
+    ['대관료 프로모션 단가', q => W(val(q.rentalPromo))],
+    ['선택상품', q => `${q.optionNote ? `<div>${esc(q.optionNote)}</div>` : ''}${val(q.optionBase) !== null || val(q.optionPromo) !== null ? `<div class="sub">${priceRow(q.optionBase, q.optionPromo)}</div>` : (q.optionNote ? '' : '—')}`],
+    ['총 기본 견적', q => `<b>${W(quoteCalc(q).base || null)}</b>`, 'sum'],
+    ['최종 프로모션 견적 합계', q => { const c = quoteCalc(q); return `<b class="final">${W(c.final || null)}</b>${c.base && c.final ? `<div class="sub save">${wonFull(c.base - c.final)} 할인</div>` : ''}${num(q.cashback) ? `<div class="sub">캐시백 반영 시 ${wonFull(c.final - num(q.cashback))}</div>` : ''}`; }, 'total'],
+    ['주요 프로모션 및 특약', q => q.promoNote ? esc(q.promoNote).replace(/\n/g, '<br>') : '—']
+  ];
+  const qTable = (cols, showVenue) => `<div class="table-box"><table class="quote">
+    <thead><tr><th scope="col">구분</th>${cols.map(({ v, q }) => `<th scope="col"><button class="row-btn" data-act="quote-edit" data-id="${esc(q.id)}">${showVenue ? `<span class="qv">${esc(v.name)}</span>` : ''}${esc(q.label || '타임')}</button></th>`).join('')}</tr></thead>
+    <tbody>${ROWS.map(([label, f, cls]) => `<tr class="${cls || ''}"><th scope="row">${label}</th>${cols.map(({ v, q }) => {
+      const c = quoteCalc(q); const best = cls === 'total' && c.final && c.final === bestFinal && allQ.length > 1 && v.status !== '제외';
+      return `<td class="${best ? 'best' : ''} ${v.status === '제외' ? 'out' : ''}">${f(q)}${best ? '<div class="sub"><span class="badge positive">최저 견적</span></div>' : ''}</td>`;
+    }).join('')}</tr>`).join('')}</tbody>
+  </table></div>`;
 
   const card = (v) => {
-    const t = venueTotal(v), link = safeUrl(v.url);
+    const qs = quotesOf(v), link = safeUrl(v.url);
     return `<article class="venue ${v.status === '제외' ? 'out' : ''}">
-      <header>
-        <div class="meta">${tag(v.status)}${v.hallType ? `<span class="badge">${esc(v.hallType)}</span>` : ''}${t && t === minT && active.length > 1 && v.status !== '제외' ? '<span class="badge positive">최저 견적</span>' : ''}${num(v.rating) && num(v.rating) === best && active.length > 1 && v.status !== '제외' ? '<span class="badge benefit">최고 별점</span>' : ''}</div>
-        <h2><button data-act="edit" data-sheet="venues" data-id="${esc(v.id)}">${esc(v.name)}</button></h2>
-        <div class="v-sub">${stars(v.rating)}<span>${esc([v.location, v.visitDate ? '투어 ' + mmdd(v.visitDate) : ''].filter(Boolean).join(' · '))}</span></div>
+      <header class="venue-head">
+        <div>
+          <div class="meta">${tag(v.status)}${v.hallType ? `<span class="badge">${esc(v.hallType)}</span>` : ''}${v.ceremonyType ? `<span class="badge">${esc(v.ceremonyType)}</span>` : ''}</div>
+          <h2><button data-act="edit" data-sheet="venues" data-id="${esc(v.id)}">${esc(v.name)}${v.hall ? ` <span class="hall">(${esc(v.hall)})</span>` : ''}</button></h2>
+          <div class="v-sub">${stars(v.rating)}<span>${esc([v.location, v.visitDate ? '상담·투어 ' + mmdd(v.visitDate) : ''].filter(Boolean).join(' · '))}</span></div>
+        </div>
+        <div class="venue-actions"><button class="btn" data-act="quote-new" data-venue="${esc(v.id)}">${icon('plus')}타임 추가</button><button class="btn line" data-act="edit" data-sheet="venues" data-id="${esc(v.id)}">홀 정보 편집</button></div>
       </header>
-      <div class="v-total"><span>예상 총액</span><strong>${t ? won(t) : '—'}</strong></div>
-      <dl class="v-nums">
-        <div><dt>보증인원</dt><dd>${num(v.guarantee) ? num(v.guarantee).toLocaleString('ko-KR') + '명' : '—'}</dd></div>
-        <div><dt>식대 (1인)</dt><dd>${num(v.mealPrice) ? won(v.mealPrice) : '—'}</dd></div>
-        <div><dt>대관료</dt><dd>${v.rental !== '' && v.rental != null ? won(v.rental) : '—'}</dd></div>
-        <div><dt>기타 비용</dt><dd>${num(v.extras) ? won(v.extras) : '—'}</dd></div>
-      </dl>
-      ${v.dates ? `<p class="v-dates"><b>가능 날짜</b> ${esc(v.dates)}</p>` : ''}
-      <div class="v-pc">
+      ${qs.length ? qTable(qs.map(q => ({ v, q })), false) : `<div class="empty-mini">아직 견적이 없어요. '타임 추가'로 예식일시별 견적을 넣어 보세요.</div>`}
+      ${lines(v.pros).length || lines(v.cons).length || v.memo ? `<div class="v-pc">
         <div><h3>장점</h3>${lines(v.pros).length ? `<ul>${lines(v.pros).map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="note">아직 없어요</p>'}</div>
-        <div><h3>단점</h3>${lines(v.cons).length ? `<ul class="cons">${lines(v.cons).map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="note">아직 없어요</p>'}</div>
-      </div>
-      ${v.memo ? `<p class="v-memo">${esc(v.memo)}</p>` : ''}
-      <footer>${link ? `<a class="ext" href="${esc(link)}" target="_blank" rel="noopener noreferrer">${icon('link')}웨딩홀 페이지</a>` : '<span></span>'}<button class="btn line" data-act="edit" data-sheet="venues" data-id="${esc(v.id)}">편집</button></footer>
+        <div><h3>단점</h3>${lines(v.cons).length ? `<ul>${lines(v.cons).map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="note">아직 없어요</p>'}</div>
+        ${v.memo ? `<div><h3 style="color:var(--ink-2)">메모</h3><p class="v-memo">${esc(v.memo).replace(/\n/g, '<br>')}</p></div>` : ''}
+      </div>` : ''}
+      ${link ? `<a class="ext" href="${esc(link)}" target="_blank" rel="noopener noreferrer">${icon('link')}웨딩홀 페이지</a>` : ''}
     </article>`;
   };
-
-  const rows = [
-    ['상태', v => tag(v.status)], ['형태', v => esc(v.hallType || '—')], ['위치', v => esc(v.location || '—')],
-    ['별점', v => stars(v.rating)], ['투어일', v => v.visitDate ? mmdd(v.visitDate) : '—'],
-    ['보증인원', v => num(v.guarantee) ? num(v.guarantee).toLocaleString('ko-KR') + '명' : '—'],
-    ['식대 (1인)', v => num(v.mealPrice) ? won(v.mealPrice) : '—'], ['대관료', v => v.rental !== '' && v.rental != null ? won(v.rental) : '—'],
-    ['기타 비용', v => num(v.extras) ? won(v.extras) : '—'],
-    ['예상 총액', v => `<b>${venueTotal(v) ? won(venueTotal(v)) : '—'}</b>`],
-    ['가능 날짜', v => esc(v.dates || '—')],
-    ['장점', v => lines(v.pros).map(esc).join('<br>') || '—'], ['단점', v => lines(v.cons).map(esc).join('<br>') || '—']
-  ];
-  const table = `<div class="table-box"><table class="compare">
-    <thead><tr><th scope="col"><span class="sr">기준</span></th>${list.map(v => `<th scope="col"><button class="row-btn" data-act="edit" data-sheet="venues" data-id="${esc(v.id)}">${esc(v.name)}</button></th>`).join('')}</tr></thead>
-    <tbody>${rows.map(([label, f]) => `<tr><th scope="row">${label}</th>${list.map(v => `<td class="${v.status === '제외' ? 'out' : ''}">${f(v)}</td>`).join('')}</tr>`).join('')}</tbody>
-  </table></div>`;
 
   return `<div class="wrap cl">${head}
     <div class="toolbar">
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <label class="count" for="vsort">정렬</label>
         <select id="vsort" class="field" data-act="venue-sort" style="width:auto">
-          <option value="total" ${ui.venueSort === 'total' ? 'selected' : ''}>예상 총액 낮은 순</option>
-          <option value="meal" ${ui.venueSort === 'meal' ? 'selected' : ''}>식대 낮은 순</option>
+          <option value="total" ${ui.venueSort === 'total' ? 'selected' : ''}>최종 견적 낮은 순</option>
           <option value="rating" ${ui.venueSort === 'rating' ? 'selected' : ''}>별점 높은 순</option>
+          <option value="recent" ${ui.venueSort === 'recent' ? 'selected' : ''}>최근 상담 순</option>
         </select>
-        <span class="count">${active.length}곳 비교 중${list.length > active.length ? ` · 제외 ${list.length - active.length}곳` : ''}</span>
+        <span class="count">${active.length}곳 · 견적 ${allQ.length}개</span>
       </div>
       <div class="seg" role="group" aria-label="보기 방식">
-        <button data-act="venue-view" data-v="card" aria-pressed="${ui.venueView === 'card'}">카드</button>
-        <button data-act="venue-view" data-v="table" aria-pressed="${ui.venueView === 'table'}">비교표</button>
+        <button data-act="venue-view" data-v="card" aria-pressed="${ui.venueView === 'card'}">홀별 보기</button>
+        <button data-act="venue-view" data-v="table" aria-pressed="${ui.venueView === 'table'}">전체 비교표</button>
       </div>
     </div>
-    ${ui.venueView === 'card' ? `<div class="venues">${list.map(card).join('')}</div>` : table}
+    ${ui.venueView === 'card' ? `<div class="venues">${list.map(card).join('')}</div>`
+      : allQ.length ? qTable(allQ.sort((a, b) => (a.c.final || 1e15) - (b.c.final || 1e15)), true) : '<div class="empty">아직 비교할 견적이 없어요.</div>'}
   </div>`;
+}
+
+/* ---------- quote form (calendar + time wheel) ---------- */
+const WD = ['일','월','화','수','목','금','토'];
+const HOURS = Array.from({ length: 13 }, (_, i) => String(i + 9).padStart(2, '0'));
+const MINUTES = ['00','10','20','30','40','50'];
+function fmtDT(date, time) {
+  if (!date) return '';
+  const d = new Date(date + 'T00:00:00'); if (isNaN(d)) return date;
+  return `${date.replace(/-/g, '/')} (${WD[d.getDay()]})${time ? ' ' + time : ''}`;
+}
+const QUOTE_MONEY = [
+  ['식대', [['mealBase','기본단가 (1인)'],['mealPromo','프로모션 단가 (1인)'],['kidMeal','소인 식대 (1인)']]],
+  ['음주류', [['drinkBase','기본단가 (1인)'],['drinkPromo','프로모션 단가 (1인)', '무료면 0을 입력해요']]],
+  ['대관료', [['rentalBase','기본단가'],['rentalPromo','프로모션 단가']]],
+  ['선택상품', [['optionBase','기본가 합계'],['optionPromo','프로모션가 합계', '무료 서비스면 0을 입력해요']]]
+];
+function moneyInput(k, label, v, hint) {
+  return `<label for="q-${k}">${esc(label)}<input class="field num" id="q-${k}" name="${k}" inputmode="numeric" data-money value="${val(v) === null ? '' : num(v).toLocaleString('ko-KR')}" placeholder="원">${hint ? `<span class="hint">${esc(hint)}</span>` : ''}</label>`;
+}
+function openQuoteForm(venueId, rec, copyFrom) {
+  const v = DB.venues.find(x => x.id === venueId); if (!v) return;
+  const isNew = !rec;
+  const n = DB.quotes.filter(q => q.venueId === venueId).length + 1;
+  rec = rec || { ...(copyFrom || {}), id: uid(), venueId, label: `타임 ${n}` };
+  const st = { date: rec.date || '', time: rec.time || '', month: (rec.date || activeWedding().date || todayStr()).slice(0, 7) };
+
+  const body = `
+    <div class="two">
+      <label for="q-label">구분 이름<input class="field" id="q-label" name="label" value="${esc(rec.label || '')}" placeholder="예: 타임 1" required></label>
+      <label for="q-guarantee">지불보증인원 (명)<input class="field num" id="q-guarantee" name="guarantee" type="number" min="0" inputmode="numeric" value="${esc(rec.guarantee ?? '')}" placeholder="예: 250"></label>
+    </div>
+    <fieldset class="dt">
+      <legend>예식일시 <span class="dt-out" id="dt-out" aria-live="polite"></span></legend>
+      <input type="hidden" name="date" id="q-date"><input type="hidden" name="time" id="q-time">
+      <div class="dt-grid">
+        <div class="mini-cal" id="mini-cal"></div>
+        <div class="wheels">
+          <div class="wheel-box">
+            ${wheelHtml('h', '시', HOURS)}
+            <span class="colon" aria-hidden="true">:</span>
+            ${wheelHtml('m', '분', MINUTES)}
+            <div class="wheel-band" aria-hidden="true"></div>
+          </div>
+          <button type="button" class="linkish" id="time-clear">시간 비우기</button>
+        </div>
+      </div>
+    </fieldset>
+    ${moneyInput('deposit', '계약금', rec.deposit)}
+    ${QUOTE_MONEY.map(([g, fs]) => `<div class="q-group"><h3>${g}</h3><div class="q-row">${fs.map(([k, l, h]) => moneyInput(k, l, rec[k], h)).join('')}</div>
+      ${g === '음주류' ? `<label for="q-drinkNote">음주류 메모<input class="field" id="q-drinkNote" name="drinkNote" value="${esc(rec.drinkNote || '')}" placeholder="예: 기본 8,800원 → 프로모션 무료 서비스"></label>` : ''}
+      ${g === '선택상품' ? `<label for="q-optionNote">선택상품 내용<input class="field" id="q-optionNote" name="optionNote" value="${esc(rec.optionNote || '')}" placeholder="예: 플라워샤워(무료), 양가모 메이크업(무료)"></label>` : ''}
+    </div>`).join('')}
+    ${moneyInput('cashback', '추가 할인·캐시백 (선택)', rec.cashback, '견적 합계와 따로 표시돼요. 예: 얼리버드 100만원 캐시백')}
+    <label for="q-promoNote">주요 프로모션 및 특약<textarea class="field" id="q-promoNote" name="promoNote">${esc(rec.promoNote || '')}</textarea></label>
+    <div class="q-calc" id="q-calc" aria-live="polite"></div>`;
+
+  showModal(`${v.name} · 견적 ${isNew ? '추가' : '편집'}`, body, {
+    wide: true,
+    extra: isNew ? null : { label: '이 타임 복제', run: () => openQuoteForm(venueId, null, { ...rec, label: `${rec.label} 복사` }) },
+    onSave: (data) => {
+      const row = { ...rec, ...data, venueId };
+      ['deposit','mealBase','mealPromo','kidMeal','drinkBase','drinkPromo','rentalBase','rentalPromo','optionBase','optionPromo','cashback'].forEach(k => { row[k] = data[k] === '' ? '' : num(data[k]); });
+      row.guarantee = data.guarantee === '' ? '' : num(data.guarantee);
+      store.upsert('quotes', row);
+      toast(isNew ? '견적을 추가했어요' : '견적을 수정했어요');
+    },
+    onDelete: isNew ? null : () => { store.remove('quotes', rec.id); toast('견적을 삭제했어요'); },
+    onOpen: (dlg) => {
+      const out = $('#dt-out', dlg), dIn = $('#q-date', dlg), tIn = $('#q-time', dlg), cal = $('#mini-cal', dlg);
+      const sync = () => { dIn.value = st.date; tIn.value = st.time; out.textContent = st.date ? fmtDT(st.date, st.time) : '날짜를 골라 주세요'; };
+      const drawCal = () => {
+        const [y, m] = st.month.split('-').map(Number);
+        const first = new Date(y, m - 1, 1), days = new Date(y, m, 0).getDate();
+        const cands = [setting('dateA'), setting('dateB')].filter(Boolean);
+        let cells = '';
+        for (let i = 0; i < first.getDay(); i++) cells += '<span></span>';
+        for (let d = 1; d <= days; d++) {
+          const k = `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`, dow = (first.getDay() + d - 1) % 7;
+          cells += `<button type="button" class="mc-day ${dow === 0 ? 'sun' : dow === 6 ? 'sat' : ''} ${k === st.date ? 'sel' : ''} ${k === todayStr() ? 'today' : ''} ${cands.includes(k) ? 'cand' : ''}" data-d="${k}" aria-pressed="${k === st.date}" aria-label="${y}년 ${m}월 ${d}일 ${WD[dow]}요일">${d}</button>`;
+        }
+        cal.innerHTML = `<div class="mc-head"><button type="button" class="btn ghost icon-btn" data-mc="-1" aria-label="이전 달">‹</button><strong>${y}년 ${m}월</strong><button type="button" class="btn ghost icon-btn" data-mc="1" aria-label="다음 달">›</button></div>
+          <div class="mc-grid">${WD.map((w, i) => `<span class="mc-dow ${i === 0 ? 'sun' : i === 6 ? 'sat' : ''}">${w}</span>`).join('')}${cells}</div>`;
+      };
+      cal.addEventListener('click', (e) => {
+        const nav = e.target.closest('[data-mc]'), day = e.target.closest('[data-d]');
+        if (nav) { const [y, m] = st.month.split('-').map(Number); const d = new Date(y, m - 1 + Number(nav.dataset.mc), 1); st.month = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`; drawCal(); const b = cal.querySelector(`[data-mc="${nav.dataset.mc}"]`); if (b) b.focus(); }
+        if (day) { st.date = day.dataset.d; drawCal(); sync(); const b = cal.querySelector(`[data-d="${st.date}"]`); if (b) b.focus(); }
+      });
+      const [h0, m0] = (st.time || '').split(':');
+      const wh = initWheel($('[data-wheel="h"]', dlg), HOURS, h0 || '12', (h) => { st.time = `${h}:${st.time ? st.time.split(':')[1] : wm.get()}`; sync(); });
+      const wm = initWheel($('[data-wheel="m"]', dlg), MINUTES, MINUTES.includes(m0) ? m0 : '00', (m) => { st.time = `${st.time ? st.time.split(':')[0] : wh.get()}:${m}`; sync(); });
+      $('#time-clear', dlg).onclick = () => { st.time = ''; sync(); };
+      drawCal(); sync();
+
+      const calc = $('#q-calc', dlg);
+      const recalc = () => {
+        const fd = Object.fromEntries(new FormData($('#mform', dlg)).entries());
+        const c = quoteCalc(fd);
+        calc.innerHTML = `<div><span>식대 소계</span><b>${c.mealSub ? wonFull(c.mealSub) : '—'}</b></div><div><span>총 기본 견적</span><b>${c.base ? wonFull(c.base) : '—'}</b></div><div class="f"><span>최종 프로모션 견적</span><b>${c.final ? wonFull(c.final) : '—'}</b></div>`;
+      };
+      dlg.addEventListener('input', recalc); recalc();
+    }
+  });
+}
+function wheelHtml(k, label, opts) {
+  return `<div class="wheel" data-wheel="${k}" role="listbox" tabindex="0" aria-label="${label}">
+    <div class="wheel-pad"></div>${opts.map(o => `<div class="wheel-opt" role="option" data-v="${o}" aria-selected="false">${o}</div>`).join('')}<div class="wheel-pad"></div>
+  </div>`;
+}
+function initWheel(el, opts, initial, onPick) {
+  const H = 40; let idx = Math.max(0, opts.indexOf(initial)), timer, ready = false;
+  const mark = () => el.querySelectorAll('.wheel-opt').forEach((o, i) => o.setAttribute('aria-selected', String(i === idx)));
+  const go = (i, smooth) => { idx = Math.max(0, Math.min(opts.length - 1, i)); el.scrollTo({ top: idx * H, behavior: smooth ? 'smooth' : 'auto' }); mark(); };
+  requestAnimationFrame(() => { go(idx, false); setTimeout(() => { ready = true; }, 60); });
+  el.addEventListener('scroll', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { const i = Math.round(el.scrollTop / H); if (i !== idx || ready) { idx = Math.max(0, Math.min(opts.length - 1, i)); mark(); if (ready) onPick(opts[idx]); } }, 90);
+  });
+  el.addEventListener('click', (e) => { const o = e.target.closest('.wheel-opt'); if (o) { go(opts.indexOf(o.dataset.v), true); onPick(o.dataset.v); } });
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); go(idx + (e.key === 'ArrowDown' ? 1 : -1), true); onPick(opts[idx]); }
+  });
+  mark();
+  return { get: () => opts[idx] };
 }
 
 /* ---------- checklist view ---------- */
@@ -976,13 +1187,11 @@ const FORMS = {
   ]},
   tasks: { title: '할 일', fields: [{ k:'title', label:'할 일', req:true }, { row:[{ k:'phase', label:'단계', type:'select', opts:() => PHASES.map(p => [p.k, `${p.name} (${p.when})`]) }, { k:'due', label:'데드라인', type:'date' }] }] },
   venues: { title: '웨딩홀', fields: [
-    { k:'name', label:'웨딩홀 이름', req:true, ph:'예: ○○ 웨딩홀 그랜드홀' },
-    { row:[{ k:'location', label:'위치', ph:'예: 서울 성수' }, { k:'hallType', label:'형태', type:'select', opts:HALL_TYPES }] },
+    { k:'name', label:'웨딩홀 이름', req:true, ph:'예: 아펠가모 광화문점' },
+    { row:[{ k:'hall', label:'홀·층', ph:'예: LL층' }, { k:'ceremonyType', label:'예식 형태', type:'select', opts:CEREMONY_TYPES }] },
+    { row:[{ k:'location', label:'위치', ph:'예: 서울 광화문' }, { k:'hallType', label:'홀 유형', type:'select', opts:HALL_TYPES }] },
     { row:[{ k:'status', label:'상태', type:'select', opts:VENUE_STATUS }, { k:'rating', label:'별점', type:'select', opts:() => [['','아직 안 매김'],['5','5점 · 최고예요'],['4','4점 · 좋아요'],['3','3점 · 보통'],['2','2점 · 아쉬워요'],['1','1점 · 별로예요']] }] },
-    { row:[{ k:'visitDate', label:'투어 날짜', type:'date' }, { k:'guarantee', label:'보증인원 (명)', type:'number' }] },
-    { row:[{ k:'mealPrice', label:'식대 1인 (원)', type:'money' }, { k:'rental', label:'대관료 (원)', type:'money' }] },
-    { k:'extras', label:'기타 비용 (원)', type:'money', hint:'꽃장식, 연출, 음향 등 견적서의 추가 비용 합계' },
-    { k:'dates', label:'가능한 날짜·시간', ph:'예: 2027.6.5 토 12시, 6.12 토 14시' },
+    { k:'visitDate', label:'상담·투어 날짜', type:'date' },
     { k:'pros', label:'장점', type:'textarea', hint:'한 줄에 하나씩 적어요' },
     { k:'cons', label:'단점', type:'textarea', hint:'한 줄에 하나씩 적어요' },
     { k:'url', label:'웨딩홀 링크', type:'url', ph:'https://' },
@@ -1003,7 +1212,7 @@ function fieldHtml(f, v) {
   } else if (f.type === 'textarea') {
     input = `<textarea class="field" id="${id}" name="${f.k}">${val}</textarea>`;
   } else if (f.type === 'money') {
-    input = `<input class="field" id="${id}" name="${f.k}" inputmode="numeric" value="${v ? num(v).toLocaleString('ko-KR') : ''}" ${f.req ? 'required' : ''} data-money><span class="hint" data-money-hint>${v ? '= ' + won(v) : '숫자만 입력'}</span>`;
+    input = `<input class="field" id="${id}" name="${f.k}" inputmode="numeric" value="${val(v) === null ? '' : num(v).toLocaleString('ko-KR')}" ${f.req ? 'required' : ''} data-money><span class="hint" data-money-hint>${v ? '= ' + won(v) : '숫자만 입력'}</span>`;
   } else {
     input = `<input class="field" id="${id}" name="${f.k}" type="${f.type || 'text'}" value="${val}" ${f.ph ? `placeholder="${esc(f.ph)}"` : ''} ${f.req ? 'required' : ''}>`;
   }
@@ -1016,7 +1225,7 @@ function openForm(sheet, rec, preset) {
     if (sheet === 'archive') Object.assign(rec, { category: ui.cat !== '전체' ? ui.cat : CATS[0], status: '검토 전', source: SOURCES[0] });
     if (sheet === 'expenses') Object.assign(rec, { date: todayStr(), kind: KINDS[0] });
     if (sheet === 'budget') rec.order = DB.budget.length + 1;
-    if (sheet === 'venues') Object.assign(rec, { status: '관심', hallType: HALL_TYPES[0] });
+    if (sheet === 'venues') Object.assign(rec, { status: '관심', hallType: HALL_TYPES[0], ceremonyType: CEREMONY_TYPES[0] });
     if (sheet === 'tasks' && !rec.phase) rec.phase = currentPhase(daysUntil(activeWedding().date)) || 'etc';
   }
   const body = def.fields.map(f => f.row ? `<div class="two">${f.row.map(x => fieldHtml(x, rec[x.k])).join('')}</div>` : fieldHtml(f, rec[f.k])).join('');
@@ -1026,13 +1235,15 @@ function openForm(sheet, rec, preset) {
       if (sheet === 'archive' && isNew) row.savedAt = todayStr();
       if ('amount' in data) row.amount = num(data.amount);
       if ('plan' in data) row.plan = num(data.plan);
-      if (sheet === 'venues') ['mealPrice', 'rental', 'extras'].forEach(k => { row[k] = data[k] === '' ? '' : num(data[k]); });
       store.upsert(sheet, row);
       toast(isNew ? '저장했어요' : '수정했어요');
+      if (sheet === 'venues' && isNew) setTimeout(() => openQuoteForm(row.id), 50);
     },
     onDelete: isNew ? null : () => {
       if (sheet === 'budget' && DB.expenses.some(e => e.budgetId === rec.id)) { toast('이 항목에 기록된 지출이 있어요. 지출을 먼저 옮기거나 지워 주세요.'); return false; }
-      store.remove(sheet, rec.id); toast('삭제했어요');
+      store.remove(sheet, rec.id);
+      if (sheet === 'venues') DB.quotes.filter(q => q.venueId === rec.id).forEach(q => store.remove('quotes', q.id));
+      toast('삭제했어요');
     }
   });
 }
@@ -1055,12 +1266,13 @@ function openSettings() {
     }
   });
 }
-function showModal(title, bodyHtml, { onSave, onDelete }) {
+function showModal(title, bodyHtml, { onSave, onDelete, onOpen, wide, extra }) {
   const dlg = $('#modal');
+  dlg.classList.toggle('wide', !!wide);
   dlg.innerHTML = `<form method="dialog" id="mform">
     <div class="m-head"><h2 id="m-title">${esc(title)}</h2><button type="button" class="btn ghost icon-btn" data-close aria-label="닫기">${icon('close')}</button></div>
     <div class="m-body">${bodyHtml}</div>
-    <div class="m-foot">${onDelete ? `<button type="button" class="btn danger" data-del>삭제</button>` : ''}
+    <div class="m-foot">${onDelete ? `<button type="button" class="btn danger" data-del>삭제</button>` : ''}${extra ? `<button type="button" class="btn line" data-extra>${esc(extra.label)}</button>` : ''}
       <div class="r"><button type="button" class="btn line" data-close>취소</button><button type="submit" class="btn">저장</button></div></div>
   </form>`;
   const form = $('#mform', dlg);
@@ -1072,8 +1284,11 @@ function showModal(title, bodyHtml, { onSave, onDelete }) {
   dlg.querySelectorAll('[data-close]').forEach(b => b.onclick = () => dlg.close());
   const del = $('[data-del]', dlg);
   if (del) del.onclick = () => { if (confirm('정말 삭제할까요? 되돌릴 수 없어요.')) { if (onDelete() !== false) dlg.close(); } };
+  const ex = $('[data-extra]', dlg);
+  if (ex) ex.onclick = () => { dlg.close(); setTimeout(extra.run, 30); };
   dlg.showModal();
-  const first = $('input,select,textarea', dlg); if (first) first.focus();
+  if (onOpen) onOpen(dlg);
+  const first = $('input:not([type=hidden]),select,textarea', dlg); if (first) first.focus();
 }
 
 /* ---------- events ---------- */
@@ -1097,6 +1312,8 @@ document.addEventListener('click', (e) => {
   else if (act === 'cl-filter') { ui.clFilter = el.dataset.f; renderKeepFocus(); }
   else if (act === 'cl-view') { ui.clView = el.dataset.v; renderKeepFocus(); }
   else if (act === 'venue-view') { ui.venueView = el.dataset.v; renderKeepFocus(); }
+  else if (act === 'quote-new') openQuoteForm(el.dataset.venue);
+  else if (act === 'quote-edit') { const q = DB.quotes.find(x => x.id === el.dataset.id); if (q) openQuoteForm(q.venueId, { ...q }); }
   else if (act === 'cal-move') { const [y, m] = ui.calMonth.split('-').map(Number); const d = new Date(y, m - 1 + Number(el.dataset.d), 1); ui.calMonth = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`; renderKeepFocus(); }
   else if (act === 'cal-today') { ui.calMonth = todayStr().slice(0, 7); renderKeepFocus(); }
   else if (act === 'cal-add') openForm('tasks', null, { due: el.dataset.date });
@@ -1179,10 +1396,10 @@ document.addEventListener('submit', (e) => {
 let qTimer;
 document.addEventListener('input', (e) => {
   if (e.target.dataset && 'money' in e.target.dataset) {
-    const inp = e.target, n = num(inp.value);
-    inp.value = n ? n.toLocaleString('ko-KR') : '';
+    const inp = e.target, digits = inp.value.replace(/[^\d]/g, ''), n = Number(digits);
+    inp.value = digits === '' ? '' : n.toLocaleString('ko-KR');
     const hint = inp.nextElementSibling;
-    if (hint && 'moneyHint' in hint.dataset) hint.textContent = n ? '= ' + won(n) : '숫자만 입력';
+    if (hint && hint.dataset && 'moneyHint' in hint.dataset) hint.textContent = n ? '= ' + won(n) : '숫자만 입력';
     return;
   }
   if (e.target.id === 'q') { ui.q = e.target.value; clearTimeout(qTimer); qTimer = setTimeout(renderKeepFocus, 120); }
