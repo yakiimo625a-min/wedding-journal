@@ -84,6 +84,7 @@ svg.i{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-widt
 .task .due.late{color:var(--warn)}
 .task .x{opacity:.0}
 .task:hover .x,.task .x:focus-visible{opacity:1}
+@media (hover:none){.task .x{opacity:1}}
 .add-row{display:flex;gap:8px;margin-top:12px}
 .field{height:44px;padding:0 14px;border:0;border-radius:6px;background:#fff;box-shadow:var(--inset);min-width:0;width:100%}
 .field:focus{outline:2px solid var(--ink);outline-offset:-1px}
@@ -156,6 +157,21 @@ td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-n
 .minus{color:var(--warn)}
 .exp-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:4px}
 .exp-head h3{margin:0;font-size:18px;font-weight:600}
+.cell{width:100%;min-width:90px;height:40px;padding:0 10px;margin:0 -10px;border:0;border-radius:6px;background:transparent;font-weight:600;font-size:15px}
+.cell.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:500;min-width:120px}
+.cell:hover{background:var(--sunken);box-shadow:var(--inset)}
+.cell:focus{background:#fff;box-shadow:inset 0 0 0 2px var(--ink);outline:0}
+.cell::placeholder{color:#9A9A9A;font-weight:400}
+.edit-table td{padding:8px}
+.edit-table td.num{padding-right:18px}
+.edit-table .add-line td{border-bottom:0}
+.edit-table tfoot td{border-top:1px solid var(--ink);border-bottom:0;font-weight:700;padding:14px 8px}
+.total-input{display:flex;align-items:baseline;gap:6px}
+.total-input span{font-size:20px;font-weight:600}
+.cell.big{height:56px;font-size:36px;font-weight:700;letter-spacing:-.03em;min-width:0;margin:0 -10px}
+.quick{display:grid;grid-template-columns:minmax(140px,1.1fr) minmax(160px,2fr) minmax(120px,1.1fr) minmax(90px,.8fr) minmax(130px,1fr) auto;gap:8px;margin:8px 0 16px}
+.quick .num{text-align:right}
+@media (max-width:900px){.quick{grid-template-columns:1fr 1fr}.quick input[name=item]{grid-column:1/-1}}
 
 /* modal */
 dialog{border:0;padding:0;border-radius:16px;box-shadow:var(--shadow);width:min(560px,calc(100vw - 32px));max-height:calc(100vh - 48px)}
@@ -179,6 +195,42 @@ select.field{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmln
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:8px;font-size:14px;box-shadow:var(--shadow);z-index:50;max-width:calc(100vw - 32px)}
 .loading{padding:120px 0;text-align:center;color:var(--ink-3)}
 footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:13px;color:var(--ink-3)}
+/* checklist */
+.nav a[aria-current="page"]{color:var(--ink);font-weight:600}
+.kpi-link{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.cl{padding-bottom:96px}
+.cl-empty{max-width:620px;padding:96px 0;display:flex;flex-direction:column;gap:16px}
+.cl-empty h1,.cl-hero h1{margin:0;font-size:clamp(32px,4.4vw,44px);font-weight:700;letter-spacing:-.03em}
+.cl-empty p{margin:0;color:var(--ink-2);line-height:1.6}
+.cl-hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;align-items:end;padding:56px 0 40px}
+.cl-hero p{margin:14px 0 0;color:var(--ink-2);font-size:17px;line-height:1.6}
+.cl-hero p b{color:var(--ink)}
+.cl-score{display:flex;gap:32px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.ring{--p:0;width:148px;height:148px;border-radius:50%;background:conic-gradient(var(--ink) calc(var(--p)*1%),#EDEDED 0);display:grid;place-items:center;flex:none}
+.ring span{width:122px;height:122px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:18px;font-weight:600}
+.ring b{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.ring span{display:flex;align-items:baseline;justify-content:center}
+.cl-score dl{margin:0;display:flex;flex-direction:column;gap:10px;min-width:180px}
+.cl-score dl div{display:flex;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.cl-score dt{color:var(--ink-3);font-size:14px}
+.cl-score dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:8px}
+.phase{background:#fff;padding:18px 16px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;min-height:44px}
+.phase:hover{background:var(--sunken)}
+.phase strong{font-size:15px;font-weight:600}
+.ph-when{font-size:12px;color:var(--ink-3)}
+.ph-count{font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.phase.now{background:#FFF6EC}
+.phase.now .ph-when{color:var(--accent);font-weight:600}
+.phase.now .bar i{background:var(--accent)}
+.phase.clear .bar i{background:var(--positive)}
+.ph-group{padding:40px 0 8px;scroll-margin-top:88px}
+.ph-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.ph-head h2{margin:0 0 2px;font-size:22px;font-weight:700;letter-spacing:-.02em}
+.ph-group.now .ph-head h2{color:var(--accent)}
+.ph-prog{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.ph-prog .bar{width:160px}
+.ph-group .add-row .field{background:transparent}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
@@ -200,7 +252,7 @@ const SCHEMA = {
   archive:  ['id','title','url','image','category','source','status','memo','savedAt'],
   budget:   ['id','name','plan','order'],
   expenses: ['id','budgetId','item','amount','kind','date','memo'],
-  tasks:    ['id','title','due','done'],
+  tasks:    ['id','title','due','done','phase'],
   events:   ['id','title','date','time','note'],
   settings: ['id','value']
 };
@@ -209,6 +261,39 @@ const SOURCES = ['인스타그램','네이버 블로그','유튜브','스레드'
 const STATUS = ['검토 전','후보','계약','검토 완료'];
 const STATUS_TONE = {'검토 전':'', '후보':'benefit', '계약':'primary', '검토 완료':'positive'};
 const KINDS = ['계약금','중도금','잔금','전액'];
+const PHASES = [
+  { k:'p1', name:'준비 시작', when:'D-12~10개월', months:10 },
+  { k:'p2', name:'주요 업체 예약', when:'D-9~7개월', months:7 },
+  { k:'p3', name:'촬영·혼수 준비', when:'D-6~4개월', months:4 },
+  { k:'p4', name:'청첩장·예복', when:'D-3~2개월', months:2 },
+  { k:'p5', name:'마무리 점검', when:'D-1개월', days:7 },
+  { k:'p6', name:'예식 주간', when:'D-1주', days:0 },
+  { k:'p7', name:'예식 이후', when:'예식 후', days:-30 },
+  { k:'etc', name:'기타', when:'시기 자유' }
+];
+const phaseOf = (t) => PHASES.find(p => p.k === t.phase) || PHASES[PHASES.length - 1];
+const TEMPLATE = {
+  p1: ['양가 상견례','예식 시기와 전체 예산 정하기','하객 규모 대략 정하기','웨딩홀 투어하고 계약하기','웨딩플래너 이용 여부 정하기'],
+  p2: ['스드메 업체 계약하기','본식 스냅·영상 업체 계약하기','신혼여행지 정하고 항공·숙소 예약하기','신혼집 지역과 형태 정하기'],
+  p3: ['웨딩 촬영(리허설 촬영)','드레스 투어하고 고르기','예물·예단 준비하기','혼수 가전·가구 리스트 만들기','신혼집 계약하기'],
+  p4: ['청첩장 디자인 고르고 주문하기','한복·예복 준비하기','사회자·축가 섭외하기','청첩장 모임 일정 잡기','본식 헤어·메이크업 시안 정하기'],
+  p5: ['모바일 청첩장 보내기','최종 하객 인원 웨딩홀에 전달하기','식순과 혼주 역할 확인하기','답례품 준비하기','신혼여행 준비물 챙기기'],
+  p6: ['업체 잔금과 당일 일정 최종 확인하기','축의금 관리 담당 정하기','당일 준비물 챙기기'],
+  p7: ['혼인신고 하기','감사 인사와 답례 전하기','축의금·예산 정산하기','사진·영상 원본 받기']
+};
+function phaseDue(p, weddingDate) {
+  if (!weddingDate || p.k === 'etc') return '';
+  const d = new Date(weddingDate + 'T00:00:00'); if (isNaN(d)) return '';
+  if (p.months) d.setMonth(d.getMonth() - p.months); else d.setDate(d.getDate() - p.days);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function currentPhase(dd) {
+  if (dd === null) return null;
+  if (dd < 0) return 'p7';
+  if (dd <= 7) return 'p6';
+  const m = dd / 30.4;
+  return m > 9.5 ? 'p1' : m > 6.5 ? 'p2' : m > 3.5 ? 'p3' : m > 1.5 ? 'p4' : 'p5';
+}
 
 /* ---------- icons ---------- */
 const P = {
@@ -251,7 +336,7 @@ let toastTimer;
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 2600); }
 
 /* ---------- data layer ---------- */
-const LOCAL_KEY = 'weddingHub.demo.v1';
+const LOCAL_KEY = 'weddingHub.demo.v2';
 const TOKEN_KEY = 'weddingHub.token';
 const isLive = () => !!CONFIG.API_URL;
 let DB = { archive:[], budget:[], expenses:[], tasks:[], events:[], settings:[] };
@@ -276,9 +361,9 @@ function seedDemo() {
       {id:'e3',budgetId:'b4',item:'항공권 2인',amount:2700000,kind:'전액',date:d(-10),memo:'예시'}
     ],
     tasks: [
-      {id:'t1',title:'웨딩홀 후보 3곳 투어 예약',due:d(-1),done:'Y'},
-      {id:'t2',title:'양가 인사 일정 정하기',due:d(3),done:''},
-      {id:'t3',title:'스드메 견적 2곳 더 받기',due:d(6),done:''}
+      {id:'t1',title:'웨딩홀 후보 3곳 투어 예약',due:d(-1),done:'Y',phase:'p1'},
+      {id:'t2',title:'양가 인사 일정 정하기',due:d(3),done:'',phase:'p1'},
+      {id:'t3',title:'스드메 견적 2곳 더 받기',due:d(6),done:'',phase:'p2'}
     ],
     events: [
       {id:'v1',title:'웨딩홀 투어 — 후보 A',date:d(4),time:'14:00',note:'시식 포함'},
@@ -307,14 +392,14 @@ const store = {
   async upsert(sheet, row) {
     const list = DB[sheet]; const i = list.findIndex(r => r.id === row.id);
     if (i >= 0) list[i] = row; else list.push(row);
-    render();
+    renderKeepFocus();
     if (!isLive()) return saveLocal();
     try { await api({ action: 'upsert', sheet, row }); }
     catch (e) { toast('저장하지 못했어요: ' + e.message); await refresh(); }
   },
   async remove(sheet, id) {
     DB[sheet] = DB[sheet].filter(r => r.id !== id);
-    render();
+    renderKeepFocus();
     if (!isLive()) return saveLocal();
     try { await api({ action: 'delete', sheet, id }); }
     catch (e) { toast('삭제하지 못했어요: ' + e.message); await refresh(); }
@@ -335,7 +420,7 @@ const setting = (k, fb = '') => (DB.settings.find(s => s.id === k) || {}).value 
 const setSetting = (k, v) => store.upsert('settings', { id: k, value: String(v) });
 
 /* ---------- view state ---------- */
-const ui = { q: '', cat: '전체', view: 'card', showDone: false };
+const ui = { q: '', cat: '전체', view: 'card', showDone: false, lastBudget: '', page: location.hash === '#/checklist' ? 'checklist' : 'home', clFilter: 'all' };
 
 /* ---------- derived ---------- */
 function budgetRows() {
@@ -367,7 +452,7 @@ function render() {
   const kpis = [
     { label: `D-day${cur.label ? ' · ' + cur.label + ' 기준' : ''}`, value: dday(dd), pct: dd === null ? 0 : Math.max(0, Math.min(100, 100 - dd / 4)), sub: other && other.date ? `${other.label}이면 ${dday(daysUntil(other.date))}` : '설정에서 예식일을 넣어 주세요' },
     { label: '예산 사용', value: usedPct + '%', pct: usedPct, sub: `${won(spentSum)} / ${won(total)}` },
-    { label: '체크리스트', value: `${tasksDone} / ${DB.tasks.length}`, pct: DB.tasks.length ? tasksDone / DB.tasks.length * 100 : 0, sub: `남은 할 일 ${DB.tasks.length - tasksDone}개` },
+    { label: '체크리스트', value: `${tasksDone} / ${DB.tasks.length}`, pct: DB.tasks.length ? tasksDone / DB.tasks.length * 100 : 0, sub: `남은 할 일 ${DB.tasks.length - tasksDone}개`, href: '#/checklist' },
     { label: '저장한 정보', value: DB.archive.length + '개', pct: DB.archive.length ? reviewed / DB.archive.length * 100 : 0, sub: `검토 완료·계약 ${reviewed}개` }
   ];
 
@@ -378,6 +463,7 @@ function render() {
   const taskHtml = (t) => `
     <div class="task ${truthy(t.done) ? 'done' : ''}">
       <label><input type="checkbox" data-act="toggle-task" data-id="${esc(t.id)}" ${truthy(t.done) ? 'checked' : ''}><span class="t">${esc(t.title)}</span></label>
+      <button class="btn ghost x" data-act="edit" data-sheet="tasks" data-id="${esc(t.id)}" aria-label="${esc(t.title)} 편집" style="font-size:13px">편집</button>
       ${t.due ? `<span class="due ${!truthy(t.done) && t.due < today ? 'late' : ''}">${mmdd(t.due)}</span>` : ''}
       <button class="btn ghost icon-btn x" data-act="del-task" data-id="${esc(t.id)}" aria-label="${esc(t.title)} 삭제">${icon('close')}</button>
     </div>`;
@@ -419,13 +505,13 @@ function render() {
     : !list.length ? `<div class="empty">'${esc(ui.q)}'에 맞는 정보가 없어요. 다른 단어로 검색하거나 카테고리를 '전체'로 바꿔 보세요.</div>`
     : ui.view === 'card' ? `<div class="grid">${list.map(cardHtml).join('')}</div>` : listHtml;
 
-  const recentExp = [...DB.expenses].sort((a, b) => String(b.date || '').localeCompare(String(a.date || ''))).slice(0, 8);
+  const recentExp = [...DB.expenses].sort((a, b) => String(b.date || '').localeCompare(String(a.date || ''))).slice(0, 12);
   const bName = (id) => (DB.budget.find(b => b.id === id) || {}).name || '미분류';
 
   $('#app').innerHTML = `
   <header class="top"><div class="wrap">
     <a class="brand" href="#">Our Wedding Journal</a>
-    <nav class="nav" aria-label="섹션"><a href="#archive">아카이브</a><a href="#budget">예산</a><a href="#week">일정·할 일</a></nav>
+    <nav class="nav" aria-label="섹션"><a href="#archive" ${ui.page === 'home' ? '' : ''}>아카이브</a><a href="#budget">예산</a><a href="#week">일정</a><a href="#/checklist" ${ui.page === 'checklist' ? 'aria-current="page"' : ''}>체크리스트</a></nav>
     <div class="top-actions">
       <button class="btn ghost icon-btn" data-act="refresh" aria-label="새로고침">${icon('refresh')}</button>
       <button class="btn ghost icon-btn" data-act="settings" aria-label="설정">${icon('gear')}</button>
@@ -434,6 +520,7 @@ function render() {
   </div></header>
   ${isLive() ? '' : `<div class="banner"><div class="wrap">체험 모드예요. 지금은 이 브라우저에만 저장되고, 구글시트를 연결하면 태현 님과 같이 쓸 수 있어요.</div></div>`}
   <main>
+  ${ui.page === 'checklist' ? checklistHtml({ cur, dd, taskHtml }) : `
   <div class="wrap"><section class="hero">
     <div>
       <span class="eyebrow">결혼 준비 기록 · ${today.replace(/-/g, '.')}</span>
@@ -443,14 +530,14 @@ function render() {
         ${dates.map(x => `<button class="chip" data-act="date" data-k="${x.k}" aria-pressed="${x === cur}">${esc(x.label || x.date)}</button>`).join('')}
       </div>
     </div>
-    <div class="kpis">${kpis.map(k => `<div class="kpi"><span>${esc(k.label)}</span><strong>${esc(k.value)}</strong><div class="bar ${k.pct > 100 ? 'over' : ''}"><i style="width:${Math.min(100, Math.max(0, k.pct))}%"></i></div><span>${esc(k.sub)}</span></div>`).join('')}</div>
+    <div class="kpis">${kpis.map(k => `<div class="kpi"><span>${k.href ? `<a href="${k.href}" class="kpi-link">${esc(k.label)}</a>` : esc(k.label)}</span><strong>${esc(k.value)}</strong><div class="bar ${k.pct > 100 ? 'over' : ''}"><i style="width:${Math.min(100, Math.max(0, k.pct))}%"></i></div><span>${esc(k.sub)}</span></div>`).join('')}</div>
   </section></div>
 
   <section id="week" class="band"><div class="wrap">
     <div>
-      <div class="band-head"><h2>할 일</h2></div>
-      ${openTasks.length ? openTasks.map(taskHtml).join('') : '<div class="empty-mini">남은 할 일이 없어요.</div>'}
-      ${doneTasks.length ? `<button class="linkish" data-act="toggle-done">${ui.showDone ? '완료한 일 숨기기' : `완료한 일 ${doneTasks.length}개 보기`}</button>${ui.showDone ? doneTasks.map(taskHtml).join('') : ''}` : ''}
+      <div class="band-head"><h2>가까운 할 일</h2><a class="btn ghost" href="#/checklist">전체 체크리스트 (${tasksDone}/${DB.tasks.length})</a></div>
+      ${openTasks.length ? openTasks.slice(0, 5).map(taskHtml).join('') : '<div class="empty-mini">남은 할 일이 없어요.</div>'}
+      ${openTasks.length > 5 ? `<a class="linkish" href="#/checklist">남은 할 일 ${openTasks.length - 5}개 더 보기</a>` : ''}
       <form class="add-row" data-form="task">
         <label class="sr" for="new-task">새 할 일</label>
         <input id="new-task" class="field" name="title" placeholder="새 할 일 입력" autocomplete="off" required>
@@ -486,44 +573,150 @@ function render() {
     <div class="budget-side">
       <span class="eyebrow">Budget</span>
       <h2>예산 노트</h2>
-      <p>계약금·잔금이 나갈 때마다 기록하면 잔액과 사용률이 바로 계산돼요.</p>
+      <p>표의 항목 이름과 예산 금액은 칸을 눌러 바로 고칠 수 있어요. 지출은 아래에서 한 줄로 기록하면 잔액과 사용률이 자동으로 계산돼요.</p>
       <div class="total">
-        <span class="note">총 예산</span>
-        <strong>${won(total)}</strong>
+        <label class="note" for="total-input">총 예산</label>
+        <div class="total-input"><input id="total-input" class="cell big" data-edit="settings" data-k="totalBudget" data-money inputmode="numeric" value="${num(setting('totalBudget')) ? num(setting('totalBudget')).toLocaleString('ko-KR') : ''}" placeholder="${planSum ? planSum.toLocaleString('ko-KR') : '총 예산 입력'}"><span>원</span></div>
+        <span class="note">${num(setting('totalBudget')) ? '= ' + won(total) : '비워 두면 항목별 예산 합계(' + won(planSum) + ')를 써요'}</span>
         <div class="bar md ${usedPct > 100 ? 'over' : ''}"><i style="width:${Math.min(100, usedPct)}%"></i></div>
         <div class="row"><span>지출 ${won(spentSum)}</span><span>남은 예산 <b class="${total - spentSum < 0 ? 'minus' : ''}">${won(total - spentSum)}</b></span></div>
         ${num(setting('totalBudget')) && planSum !== total ? `<span class="note ${planSum > total ? 'warn' : ''}">항목별 예산 합계 ${won(planSum)} — 총 예산보다 ${won(Math.abs(planSum - total))} ${planSum > total ? '많아요' : '적어요'}</span>` : ''}
       </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-        <button class="btn" data-act="new" data-sheet="expenses">${icon('plus')}지출 기록하기</button>
-        <button class="btn line" data-act="new" data-sheet="budget">항목 추가</button>
-      </div>
     </div>
     <div class="budget-main">
-      <div class="table-box"><table>
-        <thead><tr><th>항목</th><th class="num">예산</th><th class="num">지출</th><th class="num">잔액</th><th style="width:150px">사용률</th></tr></thead>
-        <tbody>${rows.length ? rows.map(r => `<tr>
-          <td><button class="row-btn" data-act="edit" data-sheet="budget" data-id="${esc(r.id)}">${esc(r.name)}</button></td>
-          <td class="num">${won(r.plan)}</td><td class="num">${won(r.spent)}</td>
+      <form id="budget-add" data-form="budget-add"></form>
+      <div class="table-box"><table class="edit-table">
+        <thead><tr><th>항목</th><th class="num">예산 (원)</th><th class="num">지출</th><th class="num">잔액</th><th style="width:130px">사용률</th><th><span class="sr">삭제</span></th></tr></thead>
+        <tbody>${rows.map(r => `<tr>
+          <td><input class="cell" id="bn-${esc(r.id)}" data-edit="budget" data-id="${esc(r.id)}" data-k="name" value="${esc(r.name)}" aria-label="항목 이름"></td>
+          <td class="num"><input class="cell num" id="bp-${esc(r.id)}" data-edit="budget" data-id="${esc(r.id)}" data-k="plan" data-money inputmode="numeric" value="${r.plan ? r.plan.toLocaleString('ko-KR') : ''}" placeholder="0" aria-label="${esc(r.name)} 예산 (원)"></td>
+          <td class="num">${won(r.spent)}</td>
           <td class="num ${r.left < 0 ? 'minus' : ''}" style="${r.left >= 0 ? 'color:var(--ink-3)' : ''}">${won(r.left)}</td>
           <td><div class="bar ${r.pct > 100 ? 'over' : ''}"><i style="width:${Math.min(100, r.pct)}%"></i></div></td>
-        </tr>`).join('') : `<tr><td colspan="5" class="empty-mini">예산 항목을 추가해 주세요.</td></tr>`}</tbody>
+          <td><button class="btn ghost icon-btn" data-act="del-budget" data-id="${esc(r.id)}" aria-label="${esc(r.name)} 항목 삭제">${icon('close')}</button></td>
+        </tr>`).join('')}
+        <tr class="add-line">
+          <td><input class="cell" name="name" form="budget-add" placeholder="+ 새 항목 이름" aria-label="새 항목 이름" autocomplete="off"></td>
+          <td class="num"><input class="cell num" name="plan" form="budget-add" data-money inputmode="numeric" placeholder="예산" aria-label="새 항목 예산 (원)"></td>
+          <td colspan="3"></td>
+          <td><button class="btn line" type="submit" form="budget-add">추가</button></td>
+        </tr></tbody>
+        ${rows.length ? `<tfoot><tr><td>합계</td><td class="num">${won(planSum)}</td><td class="num">${won(spentSum)}</td><td class="num ${planSum - spentSum < 0 ? 'minus' : ''}">${won(planSum - spentSum)}</td><td colspan="2"></td></tr></tfoot>` : ''}
       </table></div>
       <div>
-        <div class="exp-head"><h3>최근 지출</h3></div>
+        <div class="exp-head"><h3>지출 기록</h3></div>
+        <form class="quick" data-form="expense-add">
+          <select class="field" name="budgetId" aria-label="예산 항목" required>${rows.map(r => `<option value="${esc(r.id)}" ${r.id === ui.lastBudget ? 'selected' : ''}>${esc(r.name)}</option>`).join('')}</select>
+          <input class="field" name="item" placeholder="내용 (예: 웨딩홀 계약금)" aria-label="지출 내용" required autocomplete="off">
+          <input class="field num" name="amount" data-money inputmode="numeric" placeholder="금액 (원)" aria-label="금액 (원)" required>
+          <select class="field" name="kind" aria-label="구분">${KINDS.map(k => `<option>${k}</option>`).join('')}</select>
+          <input class="field" type="date" name="date" value="${todayStr()}" aria-label="날짜">
+          <button class="btn" type="submit" ${rows.length ? '' : 'disabled'}>기록</button>
+        </form>
         ${recentExp.length ? `<div class="table-box"><table>
           <thead><tr><th>날짜</th><th>내용</th><th>항목</th><th>구분</th><th class="num">금액</th></tr></thead>
           <tbody>${recentExp.map(e => `<tr>
             <td style="color:var(--ink-3)">${mmdd(e.date)}</td>
             <td><button class="row-btn" style="font-weight:500" data-act="edit" data-sheet="expenses" data-id="${esc(e.id)}">${esc(e.item)}</button></td>
             <td>${esc(bName(e.budgetId))}</td><td><span class="badge">${esc(e.kind || '')}</span></td>
-            <td class="num">${won(e.amount)}</td></tr>`).join('')}</tbody></table></div>`
+            <td class="num">${won(e.amount)}</td></tr>`).join('')}</tbody></table></div>
+          <p class="note" style="margin:8px 0 0">지출 내용을 누르면 수정하거나 삭제할 수 있어요. 최근 ${recentExp.length}건만 보여요.</p>`
           : '<div class="empty-mini">아직 기록한 지출이 없어요.</div>'}
       </div>
     </div>
   </section>
+  `}
   </main>
   <footer><div class="wrap">${isLive() ? '구글시트와 연결됨' : '체험 모드'} · Our Wedding Journal</div></footer>`;
+}
+
+/* ---------- checklist view ---------- */
+function activeWedding() {
+  const k = setting('activeDate', 'A');
+  return { label: setting(`date${k}_label`), date: setting(`date${k}`) };
+}
+function checklistHtml({ cur, dd, taskHtml }) {
+  const today = todayStr();
+  const all = DB.tasks;
+  const done = all.filter(t => truthy(t.done));
+  const open = all.filter(t => !truthy(t.done));
+  const late = open.filter(t => t.due && t.due < today);
+  const monthEnd = (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-31`; })();
+  const thisMonth = open.filter(t => t.due && t.due >= today && t.due <= monthEnd);
+  const pct = all.length ? Math.round(done.length / all.length * 100) : 0;
+  const nowK = currentPhase(dd);
+  const nowP = PHASES.find(p => p.k === nowK);
+
+  const groups = PHASES.map(p => {
+    const list = all.filter(t => phaseOf(t).k === p.k);
+    const d = list.filter(t => truthy(t.done)).length;
+    return { ...p, list, done: d, pct: list.length ? Math.round(d / list.length * 100) : 0, now: p.k === nowK };
+  }).filter(g => g.list.length || g.k !== 'etc');
+
+  const visible = (t) => ui.clFilter === 'all' || (ui.clFilter === 'open' ? !truthy(t.done) : truthy(t.done));
+  const sortT = (a, b) => (truthy(a.done) - truthy(b.done)) || (a.due || '9999').localeCompare(b.due || '9999');
+
+  if (!all.length) return `<div class="wrap cl">
+    <div class="cl-empty">
+      <span class="eyebrow">Checklist</span>
+      <h1>결혼 준비 체크리스트</h1>
+      <p>상견례부터 혼인신고까지, 시기별로 해야 할 일을 기본 체크리스트로 채워 둘 수 있어요. 불러온 뒤 필요 없는 일은 지우고, 우리만의 할 일을 더하면 돼요.</p>
+      <p class="note">${cur.date ? `${esc(cur.label || cur.date)} 예식 기준으로 단계별 마감일도 함께 넣어 드려요.` : '설정에서 예식일을 넣으면 단계별 마감일도 함께 넣어 드려요.'}</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" data-act="load-template">기본 체크리스트 불러오기</button><a class="btn line" href="#">홈으로</a></div>
+    </div></div>`;
+
+  return `<div class="wrap cl">
+    <section class="cl-hero">
+      <div>
+        <span class="eyebrow">Checklist</span>
+        <h1>결혼 준비 체크리스트</h1>
+        <p>${nowP ? `${esc(cur.label || '예식일')} 기준으로 지금은 <b>${esc(nowP.name)}</b> 단계예요. (${esc(nowP.when)})` : '설정에서 예식일을 넣으면 지금 어느 단계인지 알려 드려요.'}</p>
+      </div>
+      <div class="cl-score">
+        <div class="ring" style="--p:${pct}" role="img" aria-label="전체 진행률 ${pct}%"><span><b>${pct}</b>%</span></div>
+        <dl>
+          <div><dt>완료</dt><dd>${done.length} / ${all.length}</dd></div>
+          <div><dt>이번 달 마감</dt><dd>${thisMonth.length}개</dd></div>
+          <div><dt>지난 마감</dt><dd class="${late.length ? 'minus' : ''}">${late.length}개</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="phases" aria-label="단계별 진행률">
+      ${groups.map(g => `<a class="phase ${g.now ? 'now' : ''} ${g.list.length && g.done === g.list.length ? 'clear' : ''}" href="#ph-${g.k}" data-act="jump" data-target="ph-${g.k}">
+        <span class="ph-when">${esc(g.when)}${g.now ? ' · 지금' : ''}</span>
+        <strong>${esc(g.name)}</strong>
+        <div class="bar"><i style="width:${g.pct}%"></i></div>
+        <span class="ph-count">${g.done} / ${g.list.length}</span>
+      </a>`).join('')}
+    </section>
+
+    <div class="toolbar">
+      <div class="seg" role="group" aria-label="보기">
+        <button data-act="cl-filter" data-f="all" aria-pressed="${ui.clFilter === 'all'}">전체 ${all.length}</button>
+        <button data-act="cl-filter" data-f="open" aria-pressed="${ui.clFilter === 'open'}">남은 일 ${open.length}</button>
+        <button data-act="cl-filter" data-f="done" aria-pressed="${ui.clFilter === 'done'}">완료 ${done.length}</button>
+      </div>
+      <button class="linkish" data-act="load-template">기본 체크리스트 다시 불러오기</button>
+    </div>
+
+    ${groups.map(g => {
+      const items = g.list.filter(visible).sort(sortT);
+      return `<section class="ph-group ${g.now ? 'now' : ''}" id="ph-${g.k}">
+        <header class="ph-head">
+          <div><h2>${esc(g.name)}</h2><span class="note">${esc(g.when)}${g.now ? ' · 지금 단계' : ''}</span></div>
+          <div class="ph-prog"><span>${g.done} / ${g.list.length}</span><div class="bar md"><i style="width:${g.pct}%"></i></div></div>
+        </header>
+        ${items.length ? items.map(taskHtml).join('') : `<div class="empty-mini">${g.list.length ? (ui.clFilter === 'done' ? '아직 완료한 일이 없어요.' : '이 단계는 모두 끝냈어요.') : '아직 할 일이 없어요.'}</div>`}
+        <form class="add-row" data-form="task-phase" data-phase="${g.k}">
+          <label class="sr" for="add-${g.k}">${esc(g.name)}에 할 일 추가</label>
+          <input id="add-${g.k}" class="field" name="title" placeholder="${esc(g.name)}에 할 일 추가" autocomplete="off" required>
+          <input class="field" name="due" type="date" aria-label="마감일" style="max-width:160px">
+          <button class="btn line" type="submit">추가</button>
+        </form>
+      </section>`;
+    }).join('')}
+  </div>`;
 }
 
 /* ---------- forms ---------- */
@@ -546,7 +739,7 @@ const FORMS = {
     { k:'name', label:'항목 이름', req:true },
     { row:[{ k:'plan', label:'예산 (원)', type:'money' }, { k:'order', label:'정렬 순서', type:'number' }] }
   ]},
-  tasks: { title: '할 일', fields: [{ k:'title', label:'할 일', req:true }, { k:'due', label:'마감일', type:'date' }] },
+  tasks: { title: '할 일', fields: [{ k:'title', label:'할 일', req:true }, { row:[{ k:'phase', label:'단계', type:'select', opts:() => PHASES.map(p => [p.k, `${p.name} (${p.when})`]) }, { k:'due', label:'마감일', type:'date' }] }] },
   events: { title: '일정', fields: [
     { k:'title', label:'일정', req:true, ph:'예: 웨딩홀 투어' },
     { row:[{ k:'date', label:'날짜', type:'date' }, { k:'time', label:'시간', type:'time' }] },
@@ -628,10 +821,6 @@ function showModal(title, bodyHtml, { onSave, onDelete }) {
   dlg.querySelectorAll('[data-close]').forEach(b => b.onclick = () => dlg.close());
   const del = $('[data-del]', dlg);
   if (del) del.onclick = () => { if (confirm('정말 삭제할까요? 되돌릴 수 없어요.')) { if (onDelete() !== false) dlg.close(); } };
-  dlg.querySelectorAll('[data-money]').forEach(inp => inp.addEventListener('input', () => {
-    const n = num(inp.value); inp.value = n ? n.toLocaleString('ko-KR') : '';
-    inp.nextElementSibling.textContent = n ? '= ' + won(n) : '숫자만 입력';
-  }));
   dlg.showModal();
   const first = $('input,select,textarea', dlg); if (first) first.focus();
 }
@@ -649,25 +838,96 @@ document.addEventListener('click', (e) => {
   else if (act === 'view') { ui.view = el.dataset.view; renderKeepFocus(); }
   else if (act === 'toggle-done') { ui.showDone = !ui.showDone; render(); }
   else if (act === 'del-task') { const t = DB.tasks.find(x => x.id === el.dataset.id); if (t && confirm(`'${t.title}'을(를) 지울까요?`)) store.remove('tasks', t.id); }
+  else if (act === 'del-budget') {
+    const b = DB.budget.find(x => x.id === el.dataset.id); if (!b) return;
+    if (DB.expenses.some(x => x.budgetId === b.id)) { toast(`'${b.name}'에 기록된 지출이 있어요. 지출을 먼저 다른 항목으로 옮기거나 지워 주세요.`); return; }
+    if (confirm(`'${b.name}' 항목을 지울까요?`)) store.remove('budget', b.id);
+  }
+  else if (act === 'cl-filter') { ui.clFilter = el.dataset.f; renderKeepFocus(); }
+  else if (act === 'jump') { e.preventDefault(); const n = document.getElementById(el.dataset.target); if (n) n.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); }
+  else if (act === 'load-template') loadTemplate();
   else if (act === 'logout') { localStorage.removeItem(TOKEN_KEY); location.reload(); }
 });
 document.addEventListener('change', (e) => {
+  const t = e.target;
+  if (t.dataset.edit) {
+    // 포커스가 다음 칸으로 넘어간 뒤 저장해야 탭 이동이 끊기지 않아요.
+    setTimeout(() => saveCell(t));
+    return;
+  }
   if (e.target.dataset.act === 'toggle-task') {
     const t = DB.tasks.find(x => x.id === e.target.dataset.id);
     if (t) store.upsert('tasks', { ...t, done: e.target.checked ? 'Y' : '' });
   }
 });
+function saveCell(t) {
+  const k = t.dataset.k, isMoney = 'money' in t.dataset;
+  const val = isMoney ? (num(t.value) ? num(t.value) : '') : t.value.trim();
+  if (t.dataset.edit === 'settings') {
+    if (String(setting(k)) !== String(val)) setSetting(k, val);
+    return;
+  }
+  const rec = DB[t.dataset.edit].find(r => r.id === t.dataset.id); if (!rec) return;
+  if (k === 'name' && !val) { t.value = rec.name; toast('항목 이름은 비워 둘 수 없어요'); return; }
+  if (String(rec[k] ?? '') === String(isMoney ? (val || 0) : val) || (isMoney && num(rec[k]) === num(val))) return;
+  store.upsert(t.dataset.edit, { ...rec, [k]: isMoney ? (val || 0) : val });
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && e.target.dataset && e.target.dataset.edit) { e.preventDefault(); e.target.blur(); }
+  if (e.key === 'Escape' && e.target.dataset && e.target.dataset.edit) {
+    const t = e.target, k = t.dataset.k;
+    const cur = t.dataset.edit === 'settings' ? setting(k) : (DB[t.dataset.edit].find(r => r.id === t.dataset.id) || {})[k];
+    t.value = 'money' in t.dataset ? (num(cur) ? num(cur).toLocaleString('ko-KR') : '') : (cur ?? ''); t.blur();
+  }
+});
 document.addEventListener('submit', (e) => {
+  if (e.target.dataset.form === 'task-phase') {
+    e.preventDefault();
+    const fd = new FormData(e.target), phase = e.target.dataset.phase;
+    const title = String(fd.get('title') || '').trim(); if (!title) return;
+    store.upsert('tasks', { id: uid(), title, due: fd.get('due') || '', done: '', phase });
+    setTimeout(() => { const i = document.getElementById('add-' + phase); if (i) i.focus(); });
+    return;
+  }
+  if (e.target.dataset.form === 'budget-add') {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const name = String(fd.get('name') || '').trim();
+    if (!name) { toast('새 항목 이름을 입력해 주세요'); const n = document.querySelector('[form="budget-add"][name="name"]'); if (n) n.focus(); return; }
+    const order = DB.budget.reduce((m, b) => Math.max(m, num(b.order)), 0) + 1;
+    store.upsert('budget', { id: uid(), name, plan: num(fd.get('plan')), order });
+    toast(`'${name}' 항목을 추가했어요`);
+    setTimeout(() => { const n = document.querySelector('[form="budget-add"][name="name"]'); if (n) n.focus(); });
+    return;
+  }
+  if (e.target.dataset.form === 'expense-add') {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const amount = num(fd.get('amount'));
+    if (!amount) { toast('금액을 입력해 주세요'); return; }
+    ui.lastBudget = String(fd.get('budgetId'));
+    store.upsert('expenses', { id: uid(), budgetId: ui.lastBudget, item: String(fd.get('item')).trim(), amount, kind: fd.get('kind'), date: fd.get('date') || todayStr(), memo: '' });
+    toast(`${won(amount)} 지출을 기록했어요`);
+    setTimeout(() => { const n = document.querySelector('[data-form="expense-add"] [name="item"]'); if (n) n.focus(); });
+    return;
+  }
   if (e.target.dataset.form === 'task') {
     e.preventDefault();
     const fd = new FormData(e.target);
     const title = String(fd.get('title') || '').trim(); if (!title) return;
-    store.upsert('tasks', { id: uid(), title, due: fd.get('due') || '', done: '' });
+    store.upsert('tasks', { id: uid(), title, due: fd.get('due') || '', done: '', phase: currentPhase(daysUntil(activeWedding().date)) || 'etc' });
     setTimeout(() => { const i = $('#new-task'); if (i) i.focus(); });
   }
 });
 let qTimer;
 document.addEventListener('input', (e) => {
+  if (e.target.dataset && 'money' in e.target.dataset) {
+    const inp = e.target, n = num(inp.value);
+    inp.value = n ? n.toLocaleString('ko-KR') : '';
+    const hint = inp.nextElementSibling;
+    if (hint && 'moneyHint' in hint.dataset) hint.textContent = n ? '= ' + won(n) : '숫자만 입력';
+    return;
+  }
   if (e.target.id === 'q') { ui.q = e.target.value; clearTimeout(qTimer); qTimer = setTimeout(renderKeepFocus, 120); }
 });
 function renderKeepFocus() {
@@ -677,6 +937,28 @@ function renderKeepFocus() {
   if (id) { const n = document.getElementById(id); if (n) { n.focus(); if (pos !== null) n.setSelectionRange(pos, pos); } }
   else if (ds && ds.act) { const n = document.querySelector(`[data-act="${ds.act}"][data-${ds.act === 'cat' ? 'cat' : 'view'}="${CSS.escape(ds.cat || ds.view || '')}"]`); if (n) n.focus(); }
 }
+
+async function loadTemplate() {
+  const w = activeWedding();
+  const have = new Set(DB.tasks.map(t => t.title));
+  const rows = [];
+  PHASES.forEach(p => (TEMPLATE[p.k] || []).forEach(title => {
+    if (!have.has(title)) { const due = phaseDue(p, w.date); rows.push({ id: uid(), title, due: due && due >= todayStr() ? due : '', done: '', phase: p.k }); }
+  }));
+  if (!rows.length) { toast('기본 체크리스트가 이미 모두 들어 있어요'); return; }
+  if (!confirm(`기본 할 일 ${rows.length}개를 추가할까요? 이미 있는 항목은 건너뛰어요.`)) return;
+  DB.tasks.push(...rows); render();
+  if (!isLive()) { saveLocal(); toast(`${rows.length}개를 추가했어요`); return; }
+  toast(`${rows.length}개를 시트에 저장하는 중…`);
+  try { for (const row of rows) await api({ action: 'upsert', sheet: 'tasks', row }); toast(`${rows.length}개를 추가했어요`); }
+  catch (e) { toast('일부를 저장하지 못했어요: ' + e.message); await refresh(); }
+}
+window.addEventListener('hashchange', () => {
+  const h = location.hash;
+  const page = h === '#/checklist' ? 'checklist' : 'home';
+  if (page !== ui.page) { ui.page = page; render(); window.scrollTo(0, 0); }
+  if (page === 'home' && h.length > 1) { const n = document.getElementById(h.slice(1)); if (n) n.scrollIntoView(); }
+});
 
 /* ---------- boot ---------- */
 function showLock(msg) {
