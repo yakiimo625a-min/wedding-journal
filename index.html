@@ -319,7 +319,7 @@ table.quote thead .qv{font-size:12px;font-weight:500;opacity:.8}
 table.quote tbody th{text-align:left;font-weight:600;font-size:13px;color:var(--ink);background:var(--sunken);border-bottom:1px solid var(--line);white-space:nowrap;padding:12px 10px}
 table.quote td{text-align:center;padding:12px 10px;min-width:170px;line-height:1.5;font-variant-numeric:tabular-nums}
 table.quote tr.sum td,table.quote tr.sum th{background:#FAF6F1}
-table.quote tr.total td,table.quote tr.total th{background:#FFF1E2;border-bottom:1px solid var(--ink)}
+table.quote tr.grand td,table.quote tr.grand th{background:#FFF1E2;border-bottom:1px solid var(--ink)}
 table.quote .final{font-size:16px}
 table.quote td.best{box-shadow:inset 0 0 0 2px var(--positive)}
 table.quote td.out{color:var(--ink-3)}
@@ -895,13 +895,13 @@ function venuesHtml() {
     ['대관료 프로모션 단가', q => W(val(q.rentalPromo))],
     ['선택상품', q => `${q.optionNote ? `<div>${esc(q.optionNote)}</div>` : ''}${val(q.optionBase) !== null || val(q.optionPromo) !== null ? `<div class="sub">${priceRow(q.optionBase, q.optionPromo)}</div>` : (q.optionNote ? '' : '—')}`],
     ['총 기본 견적', q => `<b>${W(quoteCalc(q).base || null)}</b>`, 'sum'],
-    ['최종 프로모션 견적 합계', q => { const c = quoteCalc(q); return `<b class="final">${W(c.final || null)}</b>${c.base && c.final ? `<div class="sub save">${wonFull(c.base - c.final)} 할인</div>` : ''}${num(q.cashback) ? `<div class="sub">캐시백 반영 시 ${wonFull(c.final - num(q.cashback))}</div>` : ''}`; }, 'total'],
+    ['최종 프로모션 견적 합계', q => { const c = quoteCalc(q); return `<b class="final">${W(c.final || null)}</b>${c.base && c.final ? `<div class="sub save">${wonFull(c.base - c.final)} 할인</div>` : ''}${num(q.cashback) ? `<div class="sub">캐시백 반영 시 ${wonFull(c.final - num(q.cashback))}</div>` : ''}`; }, 'grand'],
     ['주요 프로모션 및 특약', q => q.promoNote ? esc(q.promoNote).replace(/\n/g, '<br>') : '—']
   ];
   const qTable = (cols, showVenue) => `<div class="table-box"><table class="quote">
     <thead><tr><th scope="col">구분</th>${cols.map(({ v, q }) => `<th scope="col"><button class="row-btn" data-act="quote-edit" data-id="${esc(q.id)}">${showVenue ? `<span class="qv">${esc(v.name)}</span>` : ''}${esc(q.label || '타임')}</button></th>`).join('')}</tr></thead>
     <tbody>${ROWS.map(([label, f, cls]) => `<tr class="${cls || ''}"><th scope="row">${label}</th>${cols.map(({ v, q }) => {
-      const c = quoteCalc(q); const best = cls === 'total' && c.final && c.final === bestFinal && allQ.length > 1 && v.status !== '제외';
+      const c = quoteCalc(q); const best = cls === 'grand' && c.final && c.final === bestFinal && allQ.length > 1 && v.status !== '제외';
       return `<td class="${best ? 'best' : ''} ${v.status === '제외' ? 'out' : ''}">${f(q)}${best ? '<div class="sub"><span class="badge positive">최저 견적</span></div>' : ''}</td>`;
     }).join('')}</tr>`).join('')}</tbody>
   </table></div>`;
