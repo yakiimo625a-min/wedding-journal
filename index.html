@@ -51,11 +51,11 @@ svg.i{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-widt
 .banner .wrap{padding-top:10px;padding-bottom:10px}
 
 /* hero */
-.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,500px),1fr));gap:48px;align-items:end;padding:64px 0 48px}
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;align-items:center;padding:40px 0 36px}
 .eyebrow{font-size:14px;font-weight:500;color:var(--accent)}
-.hero h1{margin:14px 0 18px;font-size:clamp(36px,5vw,52px);line-height:1.15;font-weight:700;letter-spacing:-.03em}
-.hero h1 svg{display:inline-block;width:.95em;height:.78em;vertical-align:-.08em;margin-left:.2em;stroke:var(--accent);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.hero p{margin:0 0 20px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:500px}
+.hero h1{margin:8px 0 10px;font-size:clamp(20px,2vw,24px);line-height:1.4;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.hero h1 svg{display:inline-block;width:1.2em;height:1em;vertical-align:-.08em;margin-left:.2em;stroke:var(--accent);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.hero p{margin:0 0 16px;font-size:15px;line-height:1.6;color:var(--ink-3);max-width:460px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border:0;border-radius:999px;background:#fff;box-shadow:var(--inset);color:var(--ink-2);font-size:14px;font-weight:500;cursor:pointer}
 .chip:hover{color:var(--ink)}
@@ -72,7 +72,13 @@ svg.i{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-widt
 
 /* week band */
 .band{background:var(--sunken);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.band .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;padding-top:32px;padding-bottom:32px}
+.band .band-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;padding-top:8px;padding-bottom:32px}
+.band-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:24px;padding-bottom:12px}
+.band-top h2{margin:0;font-size:18px;font-weight:700}
+.home-cal{padding-bottom:32px}
+.home-cal .cal{margin-top:0}
+.home-cal .cal-grid{background:#fff}
+.home-cal .cal-cell{min-height:104px}
 .band h2{margin:0;font-size:16px;font-weight:600}
 .band-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}
 .task{display:flex;align-items:center;gap:10px;min-height:44px;border-bottom:1px solid var(--line)}
@@ -210,15 +216,15 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:13px;color
 .cl-hero p b{color:var(--ink)}
 .cl-score{display:flex;gap:32px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
 .ring{--p:0;width:148px;height:148px;border-radius:50%;background:conic-gradient(var(--ink) calc(var(--p)*1%),#EDEDED 0);display:grid;place-items:center;flex:none}
-.ring span{width:122px;height:122px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:18px;font-weight:600}
+.ring > span{width:122px;height:122px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;line-height:1}
 .ring b{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1}
-.ring span{display:flex;align-items:baseline;justify-content:center}
+.ring-v{display:inline-flex;align-items:baseline;gap:1px;transform:translateX(4px)}
 .cl-score dl{margin:0;display:flex;flex-direction:column;gap:10px;min-width:180px}
 .cl-score dl div{display:flex;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line);padding-bottom:8px}
 .cl-score dt{color:var(--ink-3);font-size:14px}
 .cl-score dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
-.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:8px}
-.phase{background:#fff;padding:18px 16px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;min-height:44px}
+.phases{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:8px}
+.phase{flex:1 1 130px;background:#fff;padding:18px 16px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;min-height:44px}
 .phase:hover{background:var(--sunken)}
 .phase strong{font-size:15px;font-weight:600}
 .ph-when{font-size:12px;color:var(--ink-3)}
@@ -366,6 +372,83 @@ fieldset.dt legend{font-size:14px;font-weight:600;padding:0 6px}
 .imp-preview{display:flex;flex-direction:column;gap:8px;font-size:14px}
 .imp-preview p{margin:0}
 .imp-preview td,.imp-preview th{padding:8px}
+/* tiers */
+.tier-pick{display:block;margin-top:6px}
+.tier-pick select{appearance:none;border:0;border-radius:999px;padding:4px 12px;font-size:12px;font-weight:600;background:rgba(255,255,255,.16);color:inherit;cursor:pointer;text-align:center;min-height:28px}
+.tq .tier-pick select,.tier-pick.t1 select,.tier-pick.t2 select,.tier-pick.t3 select,.tier-pick.th select{color:#fff}
+.tier-pick.t1 select{background:var(--accent)}
+.tier-pick.t2 select{background:var(--benefit)}
+.tier-pick.t3 select{background:#5C5C5C}
+.tier-pick.th select{background:#9A9A9A}
+.tq .tier-pick{margin-top:0}
+.tq .tier-pick select{background:var(--line-soft);color:var(--ink-2)}
+.tq .tier-pick.t1 select{background:var(--accent);color:#fff}
+.tq .tier-pick.t2 select{background:var(--benefit);color:#fff}
+.tq .tier-pick.t3 select{background:#5C5C5C;color:#fff}
+.tq .tier-pick.th select{background:#9A9A9A;color:#fff}
+.tier-badge{display:inline-flex;align-items:center;min-height:24px;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:700;background:var(--line-soft);color:var(--ink-2)}
+.tier-badge.t1{background:var(--accent);color:#fff}
+.tier-badge.t2{background:var(--benefit);color:#fff}
+.tier-badge.t3{background:#5C5C5C;color:#fff}
+.tier-badge.th{background:#E1E1E1;color:#444}
+.tier-group{padding:24px 0 16px}
+.tier-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid var(--ink)}
+.tier-head > div{display:flex;align-items:center;gap:12px}
+.tier-head h2{margin:0;font-size:inherit}
+.tier-head .tier-badge{font-size:16px;min-height:32px;padding:4px 14px}
+.tq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px}
+.tq{border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px;border-top:4px solid var(--line)}
+.tq.t1{border-top-color:var(--accent)}.tq.t2{border-top-color:var(--benefit)}.tq.t3{border-top-color:#5C5C5C}.tq.th{border-top-color:#C8C8C8}
+.tq-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tq h3{margin:0;font-size:18px;font-weight:700}
+.tq h3 button{all:unset;cursor:pointer}
+.tq h3 button:hover{text-decoration:underline;text-underline-offset:3px}
+.tq h3 button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tq h3 .hall{font-size:14px}
+.tq-when{margin:0;font-size:14px;font-weight:600;color:var(--accent)}
+.tq-total{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.tq-total span{font-size:13px;color:var(--ink-2)}
+.tq-total strong{font-size:22px;font-variant-numeric:tabular-nums}
+.tq-nums{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;font-size:13px}
+.tq-nums div{display:flex;justify-content:space-between;gap:6px}
+.tq-nums dt{color:var(--ink-3)}
+.tq-nums dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.tq-nums dd.save{color:var(--positive)}
+.tq-note{margin:0;font-size:13px;color:var(--ink-2);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* guide */
+.picto{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.g-road{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.g-road li{flex:1 1 140px;background:#fff}
+.g-road a{display:flex;flex-direction:column;gap:6px;padding:20px 16px;text-decoration:none;color:inherit;height:100%}
+.g-road a:hover{background:var(--sunken)}
+.g-ico{width:52px;height:52px;border-radius:50%;background:var(--line-soft);display:grid;place-items:center;color:var(--ink);margin-bottom:4px}
+.g-road li.now{background:#FFF6EC}
+.g-road li.now .g-ico{background:var(--accent);color:#fff}
+.g-step{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--ink-3)}
+.g-road li.now .g-step{color:var(--accent)}
+.g-road strong{font-size:15px}
+.g-when{font-size:12px;color:var(--ink-3)}
+.g-phase{position:relative;padding:40px 0 8px 64px;scroll-margin-top:88px}
+.g-phase::before{content:"";position:absolute;left:21px;top:84px;bottom:-40px;width:2px;background:var(--line)}
+.g-phase:last-of-type::before{display:none}
+.g-ph-head{display:flex;align-items:center;gap:16px;margin:0 0 20px -64px}
+.g-num{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:18px;flex:none}
+.g-phase.now .g-num{background:var(--accent)}
+.g-ph-head h2{margin:0;font-size:24px;font-weight:700;letter-spacing:-.02em}
+.g-phase.now .g-ph-head h2{color:var(--accent)}
+.g-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:16px}
+.g-card{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:20px}
+.g-pic{width:56px;height:56px;border-radius:14px;background:#FFF6EC;color:var(--accent);display:grid;place-items:center;flex:none}
+.g-pic .picto{width:30px;height:30px}
+.g-body{display:flex;flex-direction:column;gap:8px;min-width:0}
+.g-body h3{margin:0;font-size:17px;font-weight:700}
+.g-body p{margin:0;font-size:14px;line-height:1.6;color:var(--ink-2)}
+.g-body ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
+.g-body li{font-size:13px;line-height:1.5;padding-left:18px;position:relative}
+.g-body li::before{content:"";position:absolute;left:2px;top:6px;width:8px;height:5px;border-left:2px solid var(--positive);border-bottom:2px solid var(--positive);transform:rotate(-45deg)}
+.g-tip{background:var(--sunken);border-radius:8px;padding:8px 12px;font-size:13px !important;color:var(--ink) !important}
+@media (max-width:640px){.g-phase{padding-left:0}.g-phase::before{display:none}.g-ph-head{margin-left:0}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
@@ -390,7 +473,7 @@ const SCHEMA = {
   tasks:    ['id','title','due','done','phase'],
   events:   ['id','title','date','time','note'],
   venues:   ['id','name','location','hallType','status','rating','visitDate','guarantee','mealPrice','rental','extras','dates','pros','cons','url','memo','hall','ceremonyType'],
-  quotes:   ['id','venueId','label','date','time','guarantee','deposit','mealBase','mealPromo','kidMeal','drinkBase','drinkPromo','drinkNote','rentalBase','rentalPromo','optionBase','optionPromo','optionNote','cashback','promoNote'],
+  quotes:   ['id','venueId','label','date','time','guarantee','deposit','mealBase','mealPromo','kidMeal','drinkBase','drinkPromo','drinkNote','rentalBase','rentalPromo','optionBase','optionPromo','optionNote','cashback','promoNote','tier'],
   settings: ['id','value']
 };
 const CATS = ['웨딩홀','스드메','예물·예단','신혼여행','혼수·가전','정책·지원','신혼집','기타'];
@@ -402,6 +485,8 @@ const HALL_TYPES = ['일반홀','단독홀','호텔','하우스·가든','채플
 const VENUE_STATUS = ['관심','투어 예정','투어 완료','가계약','계약','제외'];
 const VENUE_TONE = { '관심':'', '투어 예정':'benefit', '투어 완료':'benefit', '가계약':'positive', '계약':'primary', '제외':'' };
 const CEREMONY_TYPES = ['분리예식','동시예식','기타'];
+const TIERS = ['1순위','2순위','3순위','보류'];
+const TIER_CLS = { '1순위':'t1', '2순위':'t2', '3순위':'t3', '보류':'th' };
 const val = (x) => x === '' || x === null || x === undefined ? null : num(x);
 const promoOr = (base, promo) => val(promo) !== null ? val(promo) : (val(base) || 0);
 function quoteCalc(q) {
@@ -578,8 +663,8 @@ const setting = (k, fb = '') => (DB.settings.find(s => s.id === k) || {}).value 
 const setSetting = (k, v) => store.upsert('settings', { id: k, value: String(v) });
 
 /* ---------- view state ---------- */
-function pageFromHash() { const h = location.hash; return h === '#/checklist' ? 'checklist' : h === '#/venues' ? 'venues' : 'home'; }
-const ui = { q: '', cat: '전체', view: 'card', showDone: false, lastBudget: '', page: pageFromHash(), clFilter: 'all', clView: 'list', calMonth: todayStr().slice(0, 7), venueView: 'card', venueSort: 'total' };
+function pageFromHash() { const h = location.hash; return h === '#/checklist' ? 'checklist' : h === '#/venues' ? 'venues' : h === '#/guide' ? 'guide' : 'home'; }
+const ui = { q: '', cat: '전체', view: 'card', showDone: false, lastBudget: '', page: pageFromHash(), clFilter: 'all', clView: 'list', calMonth: todayStr().slice(0, 7), venueView: 'card', venueSort: 'total', tierFilter: 'all', homeView: (() => { try { return localStorage.getItem('weddingHub.homeView') || 'list'; } catch (e) { return 'list'; } })() };
 
 /* ---------- derived ---------- */
 function budgetRows() {
@@ -671,7 +756,7 @@ function render() {
   $('#app').innerHTML = `
   <header class="top"><div class="wrap">
     <a class="brand" href="#">Our Wedding Journal</a>
-    <nav class="nav" aria-label="섹션"><a href="#archive">아카이브</a><a href="#budget">예산</a><a href="#week">일정</a><a href="#/checklist" ${ui.page === 'checklist' ? 'aria-current="page"' : ''}>체크리스트</a><a href="#/venues" ${ui.page === 'venues' ? 'aria-current="page"' : ''}>웨딩홀 비교</a></nav>
+    <nav class="nav" aria-label="섹션"><a href="#archive">아카이브</a><a href="#budget">예산</a><a href="#week">일정</a><a href="#/checklist" ${ui.page === 'checklist' ? 'aria-current="page"' : ''}>체크리스트</a><a href="#/venues" ${ui.page === 'venues' ? 'aria-current="page"' : ''}>웨딩홀 비교</a><a href="#/guide" ${ui.page === 'guide' ? 'aria-current="page"' : ''}>가이드</a></nav>
     <div class="top-actions">
       <button class="btn ghost icon-btn" data-act="refresh" aria-label="새로고침">${icon('refresh')}</button>
       <button class="btn ghost icon-btn" data-act="settings" aria-label="설정">${icon('gear')}</button>
@@ -680,11 +765,11 @@ function render() {
   </div></header>
   ${isLive() ? '' : `<div class="banner"><div class="wrap">체험 모드예요. 지금은 이 브라우저에만 저장되고, 구글시트를 연결하면 태현 님과 같이 쓸 수 있어요.</div></div>`}
   <main>
-  ${ui.page === 'checklist' ? checklistHtml({ cur, dd, taskHtml }) : ui.page === 'venues' ? venuesHtml() : `
+  ${ui.page === 'checklist' ? checklistHtml({ cur, dd, taskHtml }) : ui.page === 'venues' ? venuesHtml() : ui.page === 'guide' ? guideHtml() : `
   <div class="wrap"><section class="hero">
     <div>
       <span class="eyebrow">결혼 준비 기록 · ${today.replace(/-/g, '.')}</span>
-      <h1>${esc(bride)}와 ${esc(groom)}의<br>천천히 준비하는 결혼${COUPLE_SVG}</h1>
+      <h1>${esc(bride)}와 ${esc(groom)}의 천천히 준비하는 결혼${COUPLE_SVG}</h1>
       <p>찾아본 정보와 쓴 돈을 한 권의 저널처럼, 하지만 언제든 바로 찾을 수 있게.</p>
       <div class="chips" role="group" aria-label="D-day 기준 예식일">
         ${dates.map(x => `<button class="chip" data-act="date" data-k="${x.k}" aria-pressed="${x === cur}">${esc(x.label || x.date)}</button>`).join('')}
@@ -693,7 +778,15 @@ function render() {
     <div class="kpis">${kpis.map(k => `<div class="kpi"><span>${k.href ? `<a href="${k.href}" class="kpi-link">${esc(k.label)}</a>` : esc(k.label)}</span><strong>${esc(k.value)}</strong><div class="bar ${k.pct > 100 ? 'over' : ''}"><i style="width:${Math.min(100, Math.max(0, k.pct))}%"></i></div><span>${esc(k.sub)}</span></div>`).join('')}</div>
   </section></div>
 
-  <section id="week" class="band"><div class="wrap">
+  <section id="week" class="band">
+    <div class="wrap band-top">
+      <h2>할 일·일정 한눈에 보기</h2>
+      <div class="seg" role="group" aria-label="보기 방식">
+        <button data-act="home-view" data-v="list" aria-pressed="${ui.homeView === 'list'}">목록</button>
+        <button data-act="home-view" data-v="cal" aria-pressed="${ui.homeView === 'cal'}">캘린더</button>
+      </div>
+    </div>
+    ${ui.homeView === 'cal' ? `<div class="wrap home-cal">${calendarHtml(t => !truthy(t.done))}</div>` : `<div class="wrap band-grid">
     <div>
       <div class="band-head"><h2>가까운 할 일</h2><a class="btn ghost" href="#/checklist">전체 체크리스트 (${tasksDone}/${DB.tasks.length})</a></div>
       ${openTasks.length ? openTasks.slice(0, 5).map(taskHtml).join('') : '<div class="empty-mini">남은 할 일이 없어요.</div>'}
@@ -709,7 +802,8 @@ function render() {
       <div class="band-head"><h2>다가오는 일정</h2><button class="btn ghost" data-act="new" data-sheet="events">${icon('plus')}일정</button></div>
       ${events.length ? events.map(e => `<button class="event" data-act="edit" data-sheet="events" data-id="${esc(e.id)}"><span class="ed">${mmdd(e.date) || '미정'}</span><span class="et">${esc(e.title)}</span><span class="en">${esc([e.time, e.note].filter(Boolean).join(' '))}</span></button>`).join('') : '<div class="empty-mini">예정된 일정이 없어요. 투어나 상담 일정을 추가해 보세요.</div>'}
     </div>
-  </div></section>
+  </div>`}
+  </section>
 
   <section id="archive" class="wrap sec">
     <div class="sec-head"><span class="eyebrow">Archive</span><h2>우리가 모은 웨딩 정보</h2></div>
@@ -899,7 +993,7 @@ function venuesHtml() {
     ['주요 프로모션 및 특약', q => q.promoNote ? esc(q.promoNote).replace(/\n/g, '<br>') : '—']
   ];
   const qTable = (cols, showVenue) => `<div class="table-box"><table class="quote">
-    <thead><tr><th scope="col">구분</th>${cols.map(({ v, q }) => `<th scope="col"><button class="row-btn" data-act="quote-edit" data-id="${esc(q.id)}">${showVenue ? `<span class="qv">${esc(v.name)}</span>` : ''}${esc(q.label || '타임')}</button></th>`).join('')}</tr></thead>
+    <thead><tr><th scope="col">구분</th>${cols.map(({ v, q }) => `<th scope="col"><button class="row-btn" data-act="quote-edit" data-id="${esc(q.id)}">${showVenue ? `<span class="qv">${esc(v.name)}</span>` : ''}${esc(q.label || '타임')}</button>${tierSelect(q)}</th>`).join('')}</tr></thead>
     <tbody>${ROWS.map(([label, f, cls]) => `<tr class="${cls || ''}"><th scope="row">${label}</th>${cols.map(({ v, q }) => {
       const c = quoteCalc(q); const best = cls === 'grand' && c.final && c.final === bestFinal && allQ.length > 1 && v.status !== '제외';
       return `<td class="${best ? 'best' : ''} ${v.status === '제외' ? 'out' : ''}">${f(q)}${best ? '<div class="sub"><span class="badge positive">최저 견적</span></div>' : ''}</td>`;
@@ -941,12 +1035,26 @@ function venuesHtml() {
       <div class="seg" role="group" aria-label="보기 방식">
         <button data-act="venue-view" data-v="card" aria-pressed="${ui.venueView === 'card'}">홀별 보기</button>
         <button data-act="venue-view" data-v="table" aria-pressed="${ui.venueView === 'table'}">전체 비교표</button>
+        <button data-act="venue-view" data-v="tier" aria-pressed="${ui.venueView === 'tier'}">우선순위</button>
       </div>
     </div>
     ${ui.venueView === 'card' ? `<div class="venues">${list.map(card).join('')}</div>`
-      : allQ.length ? qTable(allQ.sort((a, b) => (a.c.final || 1e15) - (b.c.final || 1e15)), true) : '<div class="empty">아직 비교할 견적이 없어요.</div>'}
+      : ui.venueView === 'tier' ? tierView(list.flatMap(v => quotesOf(v).map(q => ({ v, q, c: quoteCalc(q) }))), tag)
+      : (() => {
+        const everyQ = list.flatMap(v => quotesOf(v).map(q => ({ v, q, c: quoteCalc(q) })));
+        const shown = everyQ.filter(x => ui.tierFilter === 'all' || (ui.tierFilter === 'none' ? !x.q.tier : x.q.tier === ui.tierFilter)).sort((a, b) => (a.c.final || 1e15) - (b.c.final || 1e15));
+        const chips = [['all', `전체 ${everyQ.length}`], ...TIERS.map(t => [t, `${t} ${everyQ.filter(x => x.q.tier === t).length}`]), ['none', `미지정 ${everyQ.filter(x => !x.q.tier).length}`]];
+        return `<div class="chips" role="group" aria-label="우선순위로 거르기" style="margin-bottom:16px">${chips.map(([k, l]) => `<button class="chip" data-act="tier-filter" data-t="${esc(k)}" aria-pressed="${ui.tierFilter === k}">${esc(l)}</button>`).join('')}</div>
+          ${shown.length ? qTable(shown, true) : '<div class="empty">이 우선순위에 해당하는 견적이 없어요.</div>'}`;
+      })()}
   </div>`;
 }
+
+function tierSelect(q) {
+  return `<label class="tier-pick ${TIER_CLS[q.tier] || ''}"><span class="sr">${esc(q.label)} 우선순위</span><select data-act="tier-set" data-id="${esc(q.id)}">
+    <option value="" ${!q.tier ? 'selected' : ''}>우선순위 선택</option>${TIERS.map(t => `<option ${q.tier === t ? 'selected' : ''}>${t}</option>`).join('')}</select></label>`;
+}
+function tierBadge(t) { return t ? `<span class="tier-badge ${TIER_CLS[t] || ''}">${esc(t)}</span>` : ''; }
 
 /* ---------- quote sheet import (paste from Google Sheets) ---------- */
 function parseTSV(text) {
@@ -1068,6 +1176,31 @@ async function importQuotes(r, target) {
   catch (e) { toast('일부를 저장하지 못했어요: ' + e.message); await refresh(); }
 }
 
+function tierView(items, tag) {
+  if (!items.length) return '<div class="empty">아직 견적이 없어요. 홀별 보기에서 타임을 추가해 주세요.</div>';
+  const groups = [...TIERS, ''].map(t => ({ t, list: items.filter(x => (x.q.tier || '') === t).sort((a, b) => (a.c.final || 1e15) - (b.c.final || 1e15)) }));
+  const qCard = ({ v, q, c }) => `<article class="tq ${TIER_CLS[q.tier] || ''}">
+    <div class="tq-top"><div class="meta">${tierBadge(q.tier)}${tag(v.status)}</div>${tierSelect(q)}</div>
+    <h3><button data-act="quote-edit" data-id="${esc(q.id)}">${esc(v.name)}${v.hall ? ` <span class="hall">${esc(v.hall)}</span>` : ''}</button></h3>
+    <p class="tq-when">${esc(q.label || '')} · ${esc(fmtDT(q.date, q.time) || '일시 미정')}</p>
+    <div class="tq-total"><span>최종 견적</span><strong>${c.final ? wonFull(c.final) : '—'}</strong></div>
+    <dl class="tq-nums">
+      <div><dt>보증인원</dt><dd>${num(q.guarantee) ? num(q.guarantee) + '명' : '—'}</dd></div>
+      <div><dt>식대 (1인)</dt><dd>${val(q.mealPromo) !== null ? wonFull(q.mealPromo) : val(q.mealBase) !== null ? wonFull(q.mealBase) : '—'}</dd></div>
+      <div><dt>할인</dt><dd class="save">${c.base && c.final ? wonFull(c.base - c.final) : '—'}</dd></div>
+      <div><dt>계약금</dt><dd>${val(q.deposit) !== null ? wonFull(q.deposit) : '—'}</dd></div>
+    </dl>
+    ${q.promoNote ? `<p class="tq-note">${esc(q.promoNote)}</p>` : ''}
+  </article>`;
+  return groups.filter(g => g.list.length || g.t === '1순위').map(g => `<section class="tier-group">
+    <header class="tier-head">
+      <div><h2>${g.t ? tierBadge(g.t) : '<span class="tier-badge">미지정</span>'}</h2><span class="note">${g.list.length}개${g.list.length ? ` · 최저 ${wonFull(Math.min(...g.list.map(x => x.c.final).filter(Boolean)) || 0)}` : ''}</span></div>
+      ${g.list.length > 1 ? `<button class="btn line" data-act="tier-table" data-t="${g.t || 'none'}">비교표로 보기</button>` : ''}
+    </header>
+    ${g.list.length ? `<div class="tq-grid">${g.list.map(qCard).join('')}</div>` : `<div class="empty-mini">아직 1순위로 정한 견적이 없어요. 각 견적 오른쪽 위에서 우선순위를 골라 보세요.</div>`}
+  </section>`).join('');
+}
+
 /* ---------- quote form (calendar + time wheel) ---------- */
 const WD = ['일','월','화','수','목','금','토'];
 const HOURS = Array.from({ length: 13 }, (_, i) => String(i + 9).padStart(2, '0'));
@@ -1096,6 +1229,9 @@ function openQuoteForm(venueId, rec, copyFrom) {
   const body = `
     <div class="two">
       <label for="q-label">구분 이름<input class="field" id="q-label" name="label" value="${esc(rec.label || '')}" placeholder="예: 타임 1" required></label>
+      <label for="q-tier">우선순위<select class="field" id="q-tier" name="tier"><option value="">선택 안 함</option>${TIERS.map(t => `<option ${rec.tier === t ? 'selected' : ''}>${t}</option>`).join('')}</select></label>
+    </div>
+    <div class="two">
       <label for="q-guarantee">지불보증인원 (명)<input class="field num" id="q-guarantee" name="guarantee" type="number" min="0" inputmode="numeric" value="${esc(rec.guarantee ?? '')}" placeholder="예: 250"></label>
     </div>
     <fieldset class="dt">
@@ -1193,6 +1329,89 @@ function initWheel(el, opts, initial, onPick) {
   return { get: () => opts[idx] };
 }
 
+/* ---------- guide view ---------- */
+const PICTO = {
+  people:'<circle cx="8" cy="7" r="3"/><circle cx="16" cy="7" r="3"/><path d="M2 20v-1a5 5 0 0 1 10 0v1M12 20v-1a5 5 0 0 1 10 0v1"/>',
+  wallet:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 11h18M16 15.5h2"/><path d="M6 7l9-3.5L16.5 7"/>',
+  hall:'<path d="M3 21h18M5 21V10l7-6 7 6v11"/><path d="M10 21v-5a2 2 0 0 1 4 0v5"/><path d="M9 11h6"/>',
+  plan:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.5h6V4M9 10h6M9 14h6M9 18h3"/>',
+  dress:'<path d="M9.5 3l.8 4L7 11 4 21h16l-3-10-3.3-4 .8-4"/><path d="M10.3 7h3.4"/>',
+  video:'<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3z"/>',
+  camera:'<rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l1.5-3h5L16 7"/>',
+  plane:'<path d="M21 4L3 11l7 2.5L12.5 21z"/><path d="M10 13.5L21 4"/>',
+  house:'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+  rings:'<circle cx="9" cy="14.5" r="5.5"/><circle cx="15" cy="14.5" r="5.5"/><path d="M7 5.5l2-2.5 2 2.5-2 2.5z"/>',
+  envelope:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+  suit:'<path d="M8 3l4 4 4-4"/><path d="M8 3L4 6v15h16V6l-4-3"/><path d="M12 7v14M12 11h.01M12 15h.01"/>',
+  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/>',
+  check:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-6"/>',
+  heart:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/><path d="M12 18s-3.2-1.9-3.2-3.8a1.6 1.6 0 0 1 3.2-.6 1.6 1.6 0 0 1 3.2.6c0 1.9-3.2 3.8-3.2 3.8z"/>',
+  doc:'<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/>'
+};
+const picto = (k, cls = '') => `<svg class="picto ${cls}" viewBox="0 0 24 24" aria-hidden="true">${PICTO[k]}</svg>`;
+const PHASE_PICTO = { p1:'people', p2:'hall', p3:'camera', p4:'envelope', p5:'check', p6:'heart', p7:'doc' };
+const GUIDE = [
+  { phase:'p1', icon:'people', title:'양가 인사·상견례', body:'결혼 의사를 양가에 알리고, 상견례에서 예식 시기와 규모, 예물·예단·폐백 진행 여부 같은 큰 방향을 맞춰요.', points:['양가가 원하는 예식 시기·지역','예물·예단·폐백을 할지, 간소화할지','상견례 장소는 대화하기 편한 룸 식당'] },
+  { phase:'p1', icon:'wallet', title:'예산·시기·규모 정하기', body:'총예산과 양가 지원 여부, 예상 하객 수를 먼저 정하면 웨딩홀과 업체 선택이 훨씬 쉬워져요.', points:['총예산과 항목별 배분','예상 하객 수 → 보증인원의 기준','성수기(봄·가을)와 비수기 할인 비교'], tip:'예산 탭에 항목별로 먼저 적어 두면 견적 비교가 쉬워요.' },
+  { phase:'p1', icon:'hall', title:'웨딩홀 투어·계약', body:'홀 계약으로 예식 날짜와 시간이 확정되기 때문에 가장 먼저 하는 큰 계약이에요. 원하는 날짜·시간대는 일찍 마감되는 편이라 여러 곳을 같은 기준으로 비교해요.', points:['보증인원·식대·대관료와 프로모션 조건','분리·동시예식, 주차, 하객 동선','계약금 환불·날짜 변경 위약 규정'], tip:'웨딩홀 비교 탭에 타임별 견적을 넣고 우선순위를 매겨 보세요.' },
+  { phase:'p1', icon:'plan', title:'플래너 이용 여부', body:'웨딩플래너를 통해 스드메를 묶어서 계약할지, 업체를 직접 고르는 다이렉트로 할지 정해요.', points:['플래너: 일정 관리·패키지 혜택','다이렉트: 선택 폭이 넓지만 손이 많이 감','추가금 항목을 미리 비교'] },
+  { phase:'p2', icon:'dress', title:'스드메 계약', body:'스튜디오·드레스·메이크업을 계약해요. 기본 패키지 외 추가금이 생기기 쉬운 항목을 계약 전에 꼼꼼히 확인해요.', points:['원본·수정본, 헬퍼, 이른 시간 시작 비용','드레스 피팅비·업그레이드 비용','촬영·본식 날짜 확정'] },
+  { phase:'p2', icon:'video', title:'본식 스냅·영상', body:'예식 당일 사진과 영상을 남길 업체를 정해요. 인기 작가는 일정이 빨리 차는 편이에요.', points:['포트폴리오 톤이 우리 취향과 맞는지','원본 제공·보정 컷 수·납품 기간','2인 촬영 여부'] },
+  { phase:'p2', icon:'plane', title:'신혼여행 예약', body:'여행지와 일정을 정하고 항공·숙소를 예약해요. 일찍 예약할수록 선택지가 넓어요.', points:['예식 다음 날 출발 여부','여권 유효기간·영문 이름 확인','취소·변경 규정'] },
+  { phase:'p2', icon:'house', title:'신혼집 방향 정하기', body:'지역과 주거 형태, 자금 계획을 정해요. 신혼부부 대상 대출·청약 제도는 조건이 자주 바뀌니 공식 사이트에서 최신 기준을 확인해요.', points:['출퇴근 거리와 예산','대출·청약 자격 조건 확인','입주 시기와 혼수 배송 일정 맞추기'] },
+  { phase:'p3', icon:'camera', title:'웨딩 촬영·드레스 고르기', body:'드레스 투어로 본식·촬영 드레스를 고르고 스튜디오 촬영을 해요. 스튜디오 대신 야외 스냅이나 셀프 촬영을 택하는 커플도 있어요.', points:['드레스 투어 2~3곳 비교','촬영 콘셉트·소품 준비','본식 드레스 가봉 일정'] },
+  { phase:'p3', icon:'rings', title:'예물·예단·혼수', body:'예물·예단은 양가와 정한 기준에 맞춰 준비해요. 요즘은 간소화하거나 생략하는 경우도 많아요. 혼수 가전·가구는 입주 시기에 맞춰 사요.', points:['예물 반지·시계 등 범위','예단 생략·간소화 여부','가전·가구 리스트와 배송일'] },
+  { phase:'p4', icon:'envelope', title:'청첩장', body:'종이 청첩장과 모바일 청첩장을 준비하고, 지인들과 청첩장 모임 일정을 잡아요.', points:['하객 리스트와 수량','모바일 청첩장 계좌·지도 정보','청첩장 모임 일정'] },
+  { phase:'p4', icon:'suit', title:'한복·예복', body:'양가 혼주 한복과 신랑 예복을 맞추거나 대여해요. 제작은 시간이 걸리니 여유 있게 준비해요.', points:['맞춤·대여 결정','양가 한복 색 조합','가봉·수령 일정'] },
+  { phase:'p4', icon:'mic', title:'사회·축가·본식 디테일', body:'사회자와 축가를 부탁하고, 헤어·메이크업 시안과 부케, 식순을 정해요.', points:['사회자·축가 섭외','부케·부토니에','헤어·메이크업 시안'] },
+  { phase:'p5', icon:'check', title:'최종 점검', body:'최종 하객 인원을 웨딩홀에 전달하고, 식순과 혼주 역할, 답례품, 업체 잔금 일정을 다시 확인해요.', points:['최종 보증인원 전달','식순·혼주 역할 공유','모바일 청첩장 발송'] },
+  { phase:'p6', icon:'heart', title:'예식 주간·당일', body:'업체별 당일 일정과 연락처를 한 곳에 모으고, 축의금 관리 담당과 당일 준비물을 챙겨요.', points:['업체 연락처·도착 시간표','축의금 담당·정산 방법','당일 준비물(신분증, 반지 등)'] },
+  { phase:'p7', icon:'doc', title:'혼인신고·정산', body:'혼인신고를 하고 감사 인사를 전해요. 혼인신고 시점이 대출·세제 혜택 조건과 연결될 수 있으니 미리 확인해 두면 좋아요.', points:['혼인신고 시기 정하기','축의금·예산 정산','사진·영상 원본 받기'] }
+];
+function guideHtml() {
+  const nowK = currentPhase(daysUntil(activeWedding().date));
+  const phases = PHASES.filter(p => p.k !== 'etc');
+  return `<div class="wrap cl guide">
+    <section class="cl-hero">
+      <div>
+        <span class="eyebrow">Guide</span>
+        <h1>결혼 준비 가이드</h1>
+        <p>상견례부터 혼인신고까지, 결혼 준비가 보통 어떤 순서로 흘러가는지 단계별로 정리했어요. 커플마다 순서와 시기는 조금씩 달라도 괜찮아요.</p>
+      </div>
+      <div style="display:flex;justify-content:flex-end"><a class="btn line" href="#/checklist">체크리스트로 가기</a></div>
+    </section>
+
+    <ol class="g-road" aria-label="단계 요약">
+      ${phases.map((p, i) => `<li class="${p.k === nowK ? 'now' : ''}"><a href="#g-${p.k}" data-act="jump" data-target="g-${p.k}">
+        <span class="g-ico">${picto(PHASE_PICTO[p.k])}</span>
+        <span class="g-step">STEP ${i + 1}${p.k === nowK ? ' · 지금' : ''}</span>
+        <strong>${esc(p.name)}</strong>
+        <span class="g-when">${esc(p.when)}</span>
+      </a></li>`).join('')}
+    </ol>
+
+    ${phases.map((p, i) => `<section class="g-phase ${p.k === nowK ? 'now' : ''}" id="g-${p.k}">
+      <header class="g-ph-head">
+        <span class="g-num">${i + 1}</span>
+        <div><h2>${esc(p.name)}</h2><span class="note">${esc(p.when)}${p.k === nowK ? ' · 지금 단계예요' : ''}</span></div>
+      </header>
+      <div class="g-cards">
+        ${GUIDE.filter(g => g.phase === p.k).map(g => `<article class="g-card">
+          <span class="g-pic">${picto(g.icon)}</span>
+          <div class="g-body">
+            <h3>${esc(g.title)}</h3>
+            <p>${esc(g.body)}</p>
+            <ul>${g.points.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+            ${g.tip ? `<p class="g-tip">${esc(g.tip)}</p>` : ''}
+          </div>
+        </article>`).join('')}
+      </div>
+    </section>`).join('')}
+
+    <p class="note" style="margin-top:40px">시기는 일반적인 흐름을 기준으로 한 참고용이에요. 대출·청약·세제 같은 제도는 조건이 바뀔 수 있으니 신청 전에 꼭 공식 사이트에서 확인하세요.</p>
+  </div>`;
+}
+
 /* ---------- checklist view ---------- */
 function activeWedding() {
   const k = setting('activeDate', 'A');
@@ -1236,7 +1455,7 @@ function checklistHtml({ cur, dd, taskHtml }) {
         <p>${nowP ? `${esc(cur.label || '예식일')} 기준으로 지금은 <b>${esc(nowP.name)}</b> 단계예요. (${esc(nowP.when)})` : '설정에서 예식일을 넣으면 지금 어느 단계인지 알려 드려요.'}</p>
       </div>
       <div class="cl-score">
-        <div class="ring" style="--p:${pct}" role="img" aria-label="전체 진행률 ${pct}%"><span><b>${pct}</b>%</span></div>
+        <div class="ring" style="--p:${pct}" role="img" aria-label="전체 진행률 ${pct}%"><span><span class="ring-v"><b>${pct}</b>%</span></span></div>
         <dl>
           <div><dt>완료</dt><dd>${done.length} / ${all.length}</dd></div>
           <div><dt>이번 달 마감</dt><dd>${thisMonth.length}개</dd></div>
@@ -1435,6 +1654,9 @@ document.addEventListener('click', (e) => {
   else if (act === 'cl-filter') { ui.clFilter = el.dataset.f; renderKeepFocus(); }
   else if (act === 'cl-view') { ui.clView = el.dataset.v; renderKeepFocus(); }
   else if (act === 'venue-view') { ui.venueView = el.dataset.v; renderKeepFocus(); }
+  else if (act === 'home-view') { ui.homeView = el.dataset.v; try { localStorage.setItem('weddingHub.homeView', ui.homeView); } catch (e) {} renderKeepFocus(); }
+  else if (act === 'tier-filter') { ui.tierFilter = el.dataset.t; renderKeepFocus(); }
+  else if (act === 'tier-table') { ui.tierFilter = el.dataset.t; ui.venueView = 'table'; render(); window.scrollTo(0, 0); }
   else if (act === 'quote-new') openQuoteForm(el.dataset.venue);
   else if (act === 'import-quotes') openImport();
   else if (act === 'quote-edit') { const q = DB.quotes.find(x => x.id === el.dataset.id); if (q) openQuoteForm(q.venueId, { ...q }); }
@@ -1448,6 +1670,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('change', (e) => {
   const t = e.target;
   if (t.dataset.act === 'venue-sort') { ui.venueSort = t.value; renderKeepFocus(); return; }
+  if (t.dataset.act === 'tier-set') { const q = DB.quotes.find(x => x.id === t.dataset.id); if (q) { store.upsert('quotes', { ...q, tier: t.value }); toast(t.value ? `${q.label}을(를) ${t.value}로 정했어요` : '우선순위를 지웠어요'); } return; }
   if (t.dataset.edit) {
     // 포커스가 다음 칸으로 넘어간 뒤 저장해야 탭 이동이 끊기지 않아요.
     setTimeout(() => saveCell(t));
