@@ -177,7 +177,7 @@ td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-n
 .total-input{display:flex;align-items:baseline;gap:6px}
 .total-input span{font-size:20px;font-weight:600}
 .cell.big{height:56px;font-size:36px;font-weight:700;letter-spacing:-.03em;min-width:0;margin:0 -10px}
-.quick{display:grid;grid-template-columns:minmax(140px,1.1fr) minmax(160px,2fr) minmax(120px,1.1fr) minmax(90px,.8fr) minmax(130px,1fr) auto;gap:8px;margin:8px 0 16px}
+.quick{display:grid;grid-template-columns:minmax(130px,1fr) minmax(150px,1.8fr) minmax(110px,1fr) minmax(84px,.7fr) minmax(110px,1fr) minmax(130px,1fr) auto;gap:8px;margin:8px 0 16px}
 .quick .num{text-align:right}
 @media (max-width:900px){.quick{grid-template-columns:1fr 1fr}.quick input[name=item]{grid-column:1/-1}}
 
@@ -449,6 +449,94 @@ fieldset.dt legend{font-size:14px;font-weight:600;padding:0 6px}
 .g-body li::before{content:"";position:absolute;left:2px;top:6px;width:8px;height:5px;border-left:2px solid var(--positive);border-bottom:2px solid var(--positive);transform:rotate(-45deg)}
 .g-tip{background:var(--sunken);border-radius:8px;padding:8px 12px;font-size:13px !important;color:var(--ink) !important}
 @media (max-width:640px){.g-phase{padding-left:0}.g-phase::before{display:none}.g-ph-head{margin-left:0}}
+/* payer */
+.payer{display:inline-flex;padding:2px 8px;border-radius:4px;background:#F3EEF9;color:#5B3D99;font-size:12px;font-weight:600;white-space:nowrap}
+.payers{display:flex;flex-direction:column;gap:6px;margin-top:8px;padding-top:12px;border-top:1px dashed var(--line)}
+/* checks */
+fieldset.checks{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+fieldset.checks legend{font-size:14px;font-weight:500;margin-bottom:6px;padding:0}
+.check{display:inline-flex !important;flex-direction:row !important;align-items:center;gap:6px !important;min-height:40px;padding:0 12px;border-radius:999px;box-shadow:var(--inset);font-weight:500;cursor:pointer}
+.check input{width:18px;height:18px;accent-color:var(--ink);margin:0}
+.check:has(input:checked){background:var(--ink);color:#fff;box-shadow:none}
+/* people */
+.who{display:inline-flex;align-items:center;gap:4px;padding:1px 8px 1px 6px;border-radius:999px;font-size:12px;font-weight:600;color:var(--c);background:color-mix(in srgb,var(--c) 12%,#fff);margin-right:4px;white-space:nowrap}
+.who::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c)}
+.hint-box{background:#FFF6EC;border-radius:12px;padding:16px 20px;margin-bottom:16px;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.pcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:12px;margin-bottom:24px}
+.pcard{border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--c)}
+.pcard.on{box-shadow:0 0 0 2px var(--c)}
+.pcard-main{all:unset;display:flex;align-items:center;gap:10px;cursor:pointer;border-radius:8px}
+.pcard-main:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-weight:700;flex:none}
+.avatar.sm{width:30px;height:30px;font-size:13px}
+.pc-txt{display:flex;flex-direction:column}
+.pc-role{font-size:12px;color:var(--c);font-weight:600}
+.pc-meta{display:flex;gap:12px;font-size:13px;color:var(--ink-3)}
+.pc-meta b{color:var(--ink)}
+.pc-next{margin:0;font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc-actions{display:flex;gap:4px;margin:-4px 0 -6px -10px}
+.pc-actions .btn{height:36px;font-size:13px}
+.lane-nav{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.lane{display:grid;grid-template-columns:160px repeat(var(--n),minmax(150px,1fr));min-width:1060px;border-top:1px solid var(--ink);border-left:1px solid var(--line)}
+.lane-h{padding:10px;font-size:13px;color:var(--ink-3);border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.lane-h.now{color:var(--accent);font-weight:700;background:#FFF8F0}
+.lane-corner{font-weight:600;color:var(--ink)}
+.lane-who{display:flex;align-items:center;gap:8px;padding:10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:sticky;left:0;background:#fff;z-index:1}
+.lane-who strong{display:block;font-size:14px}
+.lane-who small{font-size:12px;color:var(--c);font-weight:600}
+.lane-cell{position:relative;padding:8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:4px;min-height:84px}
+.lane-cell.now{background:#FFFBF6}
+.lane-chip{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:1px;padding:6px 8px;border-radius:6px;font-size:13px;font-weight:600;line-height:1.35;background:color-mix(in srgb,var(--c) 12%,#fff);border-left:3px solid var(--c);cursor:pointer;width:100%}
+.lane-chip:hover{background:color-mix(in srgb,var(--c) 20%,#fff)}
+.lane-chip:focus-visible{outline:2px solid var(--accent)}
+.lane-chip.task{background:#fff;border:1px dashed var(--c);border-left:3px solid var(--c)}
+.lane-chip.past{opacity:.55}
+.lc-d{font-size:11px;font-weight:500;color:var(--ink-3)}
+.lane-add{margin-top:auto;align-self:flex-end;width:28px;height:28px;border:0;border-radius:6px;background:transparent;color:var(--ink-3);font-size:18px;cursor:pointer;opacity:0}
+.lane-cell:hover .lane-add,.lane-add:focus-visible{opacity:1}
+.lane-add:hover{background:var(--line-soft);color:var(--ink)}
+@media (hover:none){.lane-add{opacity:1}}
+.agenda{display:flex;flex-direction:column;border-top:1px solid var(--ink)}
+.ag-day{display:grid;grid-template-columns:100px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ag-date{display:flex;flex-direction:column}
+.ag-date b{font-size:20px}
+.ag-date span{font-size:13px;color:var(--ink-3)}
+.ag-list{display:flex;flex-direction:column;gap:6px}
+.ag-item{all:unset;box-sizing:border-box;display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center;padding:8px 10px;border-radius:8px;cursor:pointer}
+.ag-item:hover{background:var(--sunken)}
+.ag-item:focus-visible{outline:2px solid var(--accent)}
+.ag-time{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.ag-main{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ag-main small{flex-basis:100%;color:var(--ink-3);font-size:13px}
+@media (max-width:640px){.ag-day{grid-template-columns:1fr}.ag-item{grid-template-columns:52px 1fr}.ag-who{grid-column:2}}
+.todo-cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px}
+.todo-col{border:1px solid var(--line);border-radius:12px;padding:16px;border-top:4px solid var(--c)}
+.todo-col h3{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:8px}
+.todo-col h3 small{font-size:12px;color:var(--c);font-weight:600}
+.todo-col .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.todo-col .add-row .field{background:transparent}
+/* photo */
+.ph-dday{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.ph-dday strong{font-size:48px;font-weight:700;letter-spacing:-.03em;color:var(--accent);line-height:1}
+.ph-dday span{font-size:14px;color:var(--ink-3)}
+.ph-info{border:1px solid var(--line);border-radius:12px;padding:20px 24px;display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
+.ph-info dl{margin:0;display:flex;flex-wrap:wrap;gap:16px 40px}
+.ph-info dt{font-size:13px;color:var(--ink-3)}
+.ph-info dd{margin:2px 0 0;font-weight:600}
+.ph-info .note{flex-basis:100%;margin:0}
+.ph-prog{display:flex;align-items:center;gap:12px}
+.ph-prog b{font-size:22px}
+.ph-groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:16px}
+.ph-group{border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:2px}
+.ph-group h3{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:10px}
+.g-num.sm{width:28px;height:28px;font-size:13px}
+.ph-item{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line-soft);font-size:14px;line-height:1.5;cursor:pointer}
+.ph-item:last-child{border-bottom:0}
+.ph-item input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--ink);flex:none}
+.ph-item:has(input:checked) span{color:var(--ink-3);text-decoration:line-through}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+.ref{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.ref small{color:var(--ink-3);font-size:12px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
@@ -469,18 +557,20 @@ const CONFIG = {
 const SCHEMA = {
   archive:  ['id','title','url','image','category','source','status','memo','savedAt'],
   budget:   ['id','name','plan','order'],
-  expenses: ['id','budgetId','item','amount','kind','date','memo'],
-  tasks:    ['id','title','due','done','phase'],
-  events:   ['id','title','date','time','note'],
+  expenses: ['id','budgetId','item','amount','kind','date','memo','payer'],
+  tasks:    ['id','title','due','done','phase','owner'],
+  events:   ['id','title','date','time','note','who','kind'],
+  people:   ['id','name','role','phone','memo'],
   venues:   ['id','name','location','hallType','status','rating','visitDate','guarantee','mealPrice','rental','extras','dates','pros','cons','url','memo','hall','ceremonyType'],
   quotes:   ['id','venueId','label','date','time','guarantee','deposit','mealBase','mealPromo','kidMeal','drinkBase','drinkPromo','drinkNote','rentalBase','rentalPromo','optionBase','optionPromo','optionNote','cashback','promoNote','tier'],
   settings: ['id','value']
 };
-const CATS = ['웨딩홀','스드메','예물·예단','신혼여행','혼수·가전','정책·지원','신혼집','기타'];
+const CATS = ['웨딩홀','스드메','웨딩촬영','예물·예단','신혼여행','혼수·가전','정책·지원','신혼집','기타'];
 const SOURCES = ['인스타그램','네이버 블로그','유튜브','스레드','웹사이트','직접 메모'];
 const STATUS = ['검토 전','후보','계약','검토 완료'];
 const STATUS_TONE = {'검토 전':'', '후보':'benefit', '계약':'primary', '검토 완료':'positive'};
 const KINDS = ['계약금','중도금','잔금','전액'];
+function payerOptions() { const b = setting('bride', '민지'), g = setting('groom', '태현'); return [...new Set([`${b} 카드`, `${g} 카드`, '공동 통장', '부모님 지원', '현금', ...DB.expenses.map(e => e.payer).filter(Boolean)])]; }
 const HALL_TYPES = ['일반홀','단독홀','호텔','하우스·가든','채플','스몰·레스토랑'];
 const VENUE_STATUS = ['관심','투어 예정','투어 완료','가계약','계약','제외'];
 const VENUE_TONE = { '관심':'', '투어 예정':'benefit', '투어 완료':'benefit', '가계약':'positive', '계약':'primary', '제외':'' };
@@ -575,7 +665,7 @@ function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = fal
 const LOCAL_KEY = 'weddingHub.demo.v3';
 const TOKEN_KEY = 'weddingHub.token';
 const isLive = () => !!CONFIG.API_URL;
-let DB = { archive:[], budget:[], expenses:[], tasks:[], events:[], venues:[], quotes:[], settings:[] };
+let DB = { archive:[], budget:[], expenses:[], tasks:[], events:[], venues:[], quotes:[], people:[], settings:[] };
 
 function seedDemo() {
   const d = (off) => { const x = new Date(); x.setDate(x.getDate() + off); return x.toISOString().slice(0,10); };
@@ -626,11 +716,11 @@ const store = {
   async load() {
     if (!isLive()) {
       const raw = localStorage.getItem(LOCAL_KEY);
-      DB = Object.assign({ venues: [], quotes: [] }, raw ? JSON.parse(raw) : seedDemo());
+      DB = Object.assign({ venues: [], quotes: [], people: [] }, raw ? JSON.parse(raw) : seedDemo());
       return;
     }
     const res = await api({ action: 'all' });
-    DB = Object.assign({ archive:[], budget:[], expenses:[], tasks:[], events:[], venues:[], quotes:[], settings:[] }, res.data);
+    DB = Object.assign({ archive:[], budget:[], expenses:[], tasks:[], events:[], venues:[], quotes:[], people:[], settings:[] }, res.data);
   },
   async upsert(sheet, row) {
     const list = DB[sheet]; const i = list.findIndex(r => r.id === row.id);
@@ -663,8 +753,8 @@ const setting = (k, fb = '') => (DB.settings.find(s => s.id === k) || {}).value 
 const setSetting = (k, v) => store.upsert('settings', { id: k, value: String(v) });
 
 /* ---------- view state ---------- */
-function pageFromHash() { const h = location.hash; return h === '#/checklist' ? 'checklist' : h === '#/venues' ? 'venues' : h === '#/guide' ? 'guide' : 'home'; }
-const ui = { q: '', cat: '전체', view: 'card', showDone: false, lastBudget: '', page: pageFromHash(), clFilter: 'all', clView: 'list', calMonth: todayStr().slice(0, 7), venueView: 'card', venueSort: 'total', tierFilter: 'all', homeView: (() => { try { return localStorage.getItem('weddingHub.homeView') || 'list'; } catch (e) { return 'list'; } })() };
+function pageFromHash() { const h = location.hash; return h === '#/checklist' ? 'checklist' : h === '#/venues' ? 'venues' : h === '#/guide' ? 'guide' : h === '#/people' ? 'people' : h === '#/photo' ? 'photo' : 'home'; }
+const ui = { q: '', cat: '전체', view: 'card', showDone: false, lastBudget: '', page: pageFromHash(), clFilter: 'all', clView: 'list', calMonth: todayStr().slice(0, 7), venueView: 'card', venueSort: 'total', tierFilter: 'all', whoFilter: 'all', peopleView: 'lane', laneOffset: 0, homeView: (() => { try { return localStorage.getItem('weddingHub.homeView') || 'list'; } catch (e) { return 'list'; } })() };
 
 /* ---------- derived ---------- */
 function budgetRows() {
@@ -756,7 +846,7 @@ function render() {
   $('#app').innerHTML = `
   <header class="top"><div class="wrap">
     <a class="brand" href="#">Our Wedding Journal</a>
-    <nav class="nav" aria-label="섹션"><a href="#archive">아카이브</a><a href="#budget">예산</a><a href="#week">일정</a><a href="#/checklist" ${ui.page === 'checklist' ? 'aria-current="page"' : ''}>체크리스트</a><a href="#/venues" ${ui.page === 'venues' ? 'aria-current="page"' : ''}>웨딩홀 비교</a><a href="#/guide" ${ui.page === 'guide' ? 'aria-current="page"' : ''}>가이드</a></nav>
+    <nav class="nav" aria-label="섹션"><a href="#archive">아카이브</a><a href="#budget">예산</a><a href="#week">일정</a><a href="#/checklist" ${ui.page === 'checklist' ? 'aria-current="page"' : ''}>체크리스트</a><a href="#/venues" ${ui.page === 'venues' ? 'aria-current="page"' : ''}>웨딩홀 비교</a><a href="#/photo" ${ui.page === 'photo' ? 'aria-current="page"' : ''}>웨딩 촬영</a><a href="#/people" ${ui.page === 'people' ? 'aria-current="page"' : ''}>사람·일정</a><a href="#/guide" ${ui.page === 'guide' ? 'aria-current="page"' : ''}>가이드</a></nav>
     <div class="top-actions">
       <button class="btn ghost icon-btn" data-act="refresh" aria-label="새로고침">${icon('refresh')}</button>
       <button class="btn ghost icon-btn" data-act="settings" aria-label="설정">${icon('gear')}</button>
@@ -765,7 +855,7 @@ function render() {
   </div></header>
   ${isLive() ? '' : `<div class="banner"><div class="wrap">체험 모드예요. 지금은 이 브라우저에만 저장되고, 구글시트를 연결하면 태현 님과 같이 쓸 수 있어요.</div></div>`}
   <main>
-  ${ui.page === 'checklist' ? checklistHtml({ cur, dd, taskHtml }) : ui.page === 'venues' ? venuesHtml() : ui.page === 'guide' ? guideHtml() : `
+  ${ui.page === 'checklist' ? checklistHtml({ cur, dd, taskHtml }) : ui.page === 'venues' ? venuesHtml() : ui.page === 'guide' ? guideHtml() : ui.page === 'people' ? peopleHtml() : ui.page === 'photo' ? photoHtml() : `
   <div class="wrap"><section class="hero">
     <div>
       <span class="eyebrow">결혼 준비 기록 · ${today.replace(/-/g, '.')}</span>
@@ -800,7 +890,7 @@ function render() {
     </div>
     <div>
       <div class="band-head"><h2>다가오는 일정</h2><button class="btn ghost" data-act="new" data-sheet="events">${icon('plus')}일정</button></div>
-      ${events.length ? events.map(e => `<button class="event" data-act="edit" data-sheet="events" data-id="${esc(e.id)}"><span class="ed">${mmdd(e.date) || '미정'}</span><span class="et">${esc(e.title)}</span><span class="en">${esc([e.time, e.note].filter(Boolean).join(' '))}</span></button>`).join('') : '<div class="empty-mini">예정된 일정이 없어요. 투어나 상담 일정을 추가해 보세요.</div>'}
+      ${events.length ? events.map(e => `<button class="event" data-act="edit" data-sheet="events" data-id="${esc(e.id)}"><span class="ed">${mmdd(e.date) || '미정'}</span><span class="et">${esc(e.title)}</span><span class="en">${whoTags(whoList(e))} ${esc([e.time, e.note].filter(Boolean).join(' '))}</span></button>`).join('') : '<div class="empty-mini">예정된 일정이 없어요. 투어나 상담 일정을 추가해 보세요.</div>'}
     </div>
   </div>`}
   </section>
@@ -834,6 +924,7 @@ function render() {
         <span class="note">${num(setting('totalBudget')) ? '= ' + won(total) : '비워 두면 항목별 예산 합계(' + won(planSum) + ')를 써요'}</span>
         <div class="bar md ${usedPct > 100 ? 'over' : ''}"><i style="width:${Math.min(100, usedPct)}%"></i></div>
         <div class="row"><span>지출 ${won(spentSum)}</span><span>남은 예산 <b class="${total - spentSum < 0 ? 'minus' : ''}">${won(total - spentSum)}</b></span></div>
+        ${(() => { const by = {}; DB.expenses.forEach(e => { const k = e.payer || '미지정'; by[k] = (by[k] || 0) + num(e.amount); }); const ent = Object.entries(by).sort((a, b) => b[1] - a[1]); return ent.length ? `<div class="payers"><span class="note">결제 수단별 지출</span>${ent.map(([k, v]) => `<div class="row"><span class="payer">${esc(k)}</span><b>${won(v)}</b></div>`).join('')}</div>` : ''; })()}
         ${num(setting('totalBudget')) && planSum !== total ? `<span class="note ${planSum > total ? 'warn' : ''}">항목별 예산 합계 ${won(planSum)} — 총 예산보다 ${won(Math.abs(planSum - total))} ${planSum > total ? '많아요' : '적어요'}</span>` : ''}
       </div>
     </div>
@@ -864,15 +955,16 @@ function render() {
           <input class="field" name="item" placeholder="내용 (예: 웨딩홀 계약금)" aria-label="지출 내용" required autocomplete="off">
           <input class="field num" name="amount" data-money inputmode="numeric" placeholder="금액 (원)" aria-label="금액 (원)" required>
           <select class="field" name="kind" aria-label="구분">${KINDS.map(k => `<option>${k}</option>`).join('')}</select>
+          <input class="field" name="payer" list="payer-list" placeholder="누구 카드" aria-label="결제 수단 (누구 카드)" value="${esc(ui.lastPayer || '')}" autocomplete="off"><datalist id="payer-list">${payerOptions().map(o => `<option value="${esc(o)}">`).join('')}</datalist>
           <input class="field" type="date" name="date" value="${todayStr()}" aria-label="날짜">
           <button class="btn" type="submit" ${rows.length ? '' : 'disabled'}>기록</button>
         </form>
         ${recentExp.length ? `<div class="table-box"><table>
-          <thead><tr><th>날짜</th><th>내용</th><th>항목</th><th>구분</th><th class="num">금액</th></tr></thead>
+          <thead><tr><th>날짜</th><th>내용</th><th>항목</th><th>구분</th><th>결제</th><th class="num">금액</th></tr></thead>
           <tbody>${recentExp.map(e => `<tr>
             <td style="color:var(--ink-3)">${mmdd(e.date)}</td>
             <td><button class="row-btn" style="font-weight:500" data-act="edit" data-sheet="expenses" data-id="${esc(e.id)}">${esc(e.item)}</button></td>
-            <td>${esc(bName(e.budgetId))}</td><td><span class="badge">${esc(e.kind || '')}</span></td>
+            <td>${esc(bName(e.budgetId))}</td><td><span class="badge">${esc(e.kind || '')}</span></td><td>${e.payer ? `<span class="payer">${esc(e.payer)}</span>` : '<span class="note">—</span>'}</td>
             <td class="num">${won(e.amount)}</td></tr>`).join('')}</tbody></table></div>
           <p class="note" style="margin:8px 0 0">지출 내용을 누르면 수정하거나 삭제할 수 있어요. 최근 ${recentExp.length}건만 보여요.</p>`
           : '<div class="empty-mini">아직 기록한 지출이 없어요.</div>'}
@@ -1412,6 +1504,205 @@ function guideHtml() {
   </div>`;
 }
 
+/* ---------- people & shared schedule ---------- */
+const PERSON_ROLES = ['웨딩플래너','신부측 부모님','신랑측 부모님','가족·친척','업체 담당자','친구','기타'];
+const ROLE_COLOR = { '신부':'#B2621A', '신랑':'#0B5E94', '웨딩플래너':'#6E4BB5', '신부측 부모님':'#B23A6B', '신랑측 부모님':'#1F6A47', '가족·친척':'#8A6D1F', '업체 담당자':'#475569', '친구':'#0E7490', '기타':'#5C5C5C' };
+const EVENT_KINDS = ['상담·미팅','투어','피팅','촬영','가족 일정','예식 준비','기타'];
+const PARENT_TASKS = ['하객 명단 정리해서 전달','한복 맞춤·대여 예약','혼주 헤어·메이크업 예약','폐백·이바지 진행 여부 정하기','혼주 인사·식사 대접 인원 정리','축의금 접수 담당 정하기'];
+function participants() {
+  return [
+    { id:'bride', name: setting('bride', '민지'), role:'신부', builtin:true },
+    { id:'groom', name: setting('groom', '태현'), role:'신랑', builtin:true },
+    ...DB.people.map(p => ({ ...p }))
+  ].map(p => ({ ...p, color: ROLE_COLOR[p.role] || ROLE_COLOR['기타'] }));
+}
+const whoList = (e) => String(e.who || '').split(',').map(x => x.trim()).filter(Boolean);
+const personById = (id) => participants().find(p => p.id === id);
+function whoTags(ids) {
+  return ids.map(personById).filter(Boolean).map(p => `<span class="who" style="--c:${p.color}">${esc(p.name)}</span>`).join('');
+}
+function mondayOf(d) { const x = new Date(d); x.setHours(0,0,0,0); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x; }
+const ymd = (d) => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+
+function peopleHtml() {
+  const ps = participants();
+  const today = todayStr();
+  const sel = ui.whoFilter;
+  const shown = sel === 'all' ? ps : ps.filter(p => p.id === sel);
+  const evOf = (pid) => DB.events.filter(e => whoList(e).includes(pid));
+  const taskOf = (pid) => DB.tasks.filter(t => t.owner === pid && !truthy(t.done)).sort((a, b) => (a.due || '9999').localeCompare(b.due || '9999'));
+
+  const card = (p) => {
+    const next = evOf(p.id).filter(e => e.date && e.date >= today).sort((a, b) => a.date.localeCompare(b.date))[0];
+    const tel = String(p.phone || '').replace(/[^\d+]/g, '');
+    return `<article class="pcard ${sel === p.id ? 'on' : ''}" style="--c:${p.color}">
+      <button class="pcard-main" data-act="who-filter" data-w="${esc(p.id)}" aria-pressed="${sel === p.id}">
+        <span class="avatar" aria-hidden="true">${esc(String(p.name || '?').slice(0, 1))}</span>
+        <span class="pc-txt"><span class="pc-role">${esc(p.role)}</span><strong>${esc(p.name)}</strong></span>
+      </button>
+      <div class="pc-meta">
+        <span>다가오는 일정 <b>${evOf(p.id).filter(e => !e.date || e.date >= today).length}</b></span>
+        <span>챙길 일 <b>${taskOf(p.id).length}</b></span>
+      </div>
+      <p class="pc-next">${next ? `다음: ${mmdd(next.date)} ${esc(next.title)}` : '예정된 일정 없음'}</p>
+      ${p.builtin ? '' : `<div class="pc-actions">${tel ? `<a class="btn ghost" href="tel:${esc(tel)}">전화</a>` : ''}<button class="btn ghost" data-act="edit" data-sheet="people" data-id="${esc(p.id)}">정보 편집</button></div>`}
+    </article>`;
+  };
+
+  // weekly swimlane
+  const start = mondayOf(new Date()); start.setDate(start.getDate() + ui.laneOffset * 7);
+  const weeks = Array.from({ length: 6 }, (_, i) => { const s = new Date(start); s.setDate(s.getDate() + i * 7); const e = new Date(s); e.setDate(e.getDate() + 6); return { s: ymd(s), e: ymd(e), label: `${s.getMonth()+1}/${s.getDate()} – ${e.getMonth()+1}/${e.getDate()}`, now: ymd(s) <= today && today <= ymd(e) }; });
+  const chip = (e) => `<button class="lane-chip ${e.date < today ? 'past' : ''}" data-act="edit" data-sheet="events" data-id="${esc(e.id)}"><span class="lc-d">${mmdd(e.date)} ${WD[new Date(e.date + 'T00:00:00').getDay()]}${e.time ? ' ' + esc(e.time) : ''}</span>${esc(e.title)}</button>`;
+  const tchip = (t) => `<button class="lane-chip task" data-act="edit" data-sheet="tasks" data-id="${esc(t.id)}"><span class="lc-d">${mmdd(t.due)} 마감</span>${esc(t.title)}</button>`;
+  const lane = `<div class="lane-nav">
+      <button class="btn ghost" data-act="lane-move" data-d="-6">이전 6주</button>
+      <button class="btn line" data-act="lane-move" data-d="0">이번 주</button>
+      <button class="btn ghost" data-act="lane-move" data-d="6">다음 6주</button>
+    </div>
+    <div class="table-box"><div class="lane" style="--n:${weeks.length}">
+      <div class="lane-h lane-corner">사람</div>
+      ${weeks.map(w => `<div class="lane-h ${w.now ? 'now' : ''}">${w.label}${w.now ? ' · 이번 주' : ''}</div>`).join('')}
+      ${shown.map(p => `<div class="lane-who" style="--c:${p.color}"><span class="avatar sm" aria-hidden="true">${esc(String(p.name).slice(0, 1))}</span><span><strong>${esc(p.name)}</strong><small>${esc(p.role)}</small></span></div>
+        ${weeks.map(w => { const es = evOf(p.id).filter(e => e.date && e.date >= w.s && e.date <= w.e).sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time)); const ts = DB.tasks.filter(t => t.owner === p.id && t.due && !truthy(t.done) && t.due >= w.s && t.due <= w.e);
+          return `<div class="lane-cell ${w.now ? 'now' : ''}" style="--c:${p.color}">${es.map(chip).join('')}${ts.map(tchip).join('')}<button class="lane-add" data-act="lane-add" data-w="${esc(p.id)}" data-date="${w.s < today && today <= w.e ? today : w.s}" aria-label="${esc(p.name)} ${w.label} 일정 추가">+</button></div>`; }).join('')}`).join('')}
+    </div></div>`;
+
+  // agenda
+  const upcoming = DB.events.filter(e => (!e.date || e.date >= today) && (sel === 'all' || whoList(e).includes(sel))).sort((a, b) => (a.date || '9999').localeCompare(b.date || '9999') || String(a.time).localeCompare(String(b.time)));
+  const byDate = {}; upcoming.forEach(e => (byDate[e.date || '날짜 미정'] = byDate[e.date || '날짜 미정'] || []).push(e));
+  const agenda = upcoming.length ? `<div class="agenda">${Object.entries(byDate).map(([d, es]) => `<div class="ag-day">
+      <div class="ag-date">${d === '날짜 미정' ? d : `<b>${mmdd(d)}</b><span>${WD[new Date(d + 'T00:00:00').getDay()]}요일</span>`}</div>
+      <div class="ag-list">${es.map(e => `<button class="ag-item" data-act="edit" data-sheet="events" data-id="${esc(e.id)}">
+        <span class="ag-time">${esc(e.time || '종일')}</span>
+        <span class="ag-main"><strong>${esc(e.title)}</strong>${e.kind ? `<span class="badge">${esc(e.kind)}</span>` : ''}${e.note ? `<small>${esc(e.note)}</small>` : ''}</span>
+        <span class="ag-who">${whoTags(whoList(e)) || '<span class="note">참석자 미지정</span>'}</span>
+      </button>`).join('')}</div>
+    </div>`).join('')}</div>` : '<div class="empty">다가오는 일정이 없어요.</div>';
+
+  // per-person to-dos
+  const todoCols = shown.map(p => {
+    const ts = taskOf(p.id);
+    const isParent = /부모님/.test(p.role);
+    return `<div class="todo-col" style="--c:${p.color}">
+      <h3><span class="dot" aria-hidden="true"></span>${esc(p.name)} <small>${esc(p.role)}</small></h3>
+      ${ts.length ? ts.map(t => `<div class="task">
+        <label><input type="checkbox" data-act="toggle-task" data-id="${esc(t.id)}"><span class="t">${esc(t.title)}</span></label>
+        ${dueBadge(t)}
+      </div>`).join('') : `<p class="empty-mini">챙길 일이 없어요.${isParent ? `<br><button class="linkish" data-act="parent-tasks" data-w="${esc(p.id)}">부모님이 챙길 일 예시 넣기</button>` : ''}</p>`}
+      <form class="add-row" data-form="owner-task" data-w="${esc(p.id)}">
+        <label class="sr" for="ot-${esc(p.id)}">${esc(p.name)}에게 할 일 추가</label>
+        <input id="ot-${esc(p.id)}" class="field" name="title" placeholder="할 일 추가" autocomplete="off" required>
+        <input class="field" name="due" type="date" aria-label="데드라인" style="max-width:150px">
+        <button class="btn line" type="submit">추가</button>
+      </form>
+    </div>`;
+  }).join('');
+
+  return `<div class="wrap cl">
+    <section class="cl-hero">
+      <div>
+        <span class="eyebrow">People</span>
+        <h1>함께 준비하는 사람들</h1>
+        <p>웨딩플래너, 양가 부모님처럼 결혼 준비를 함께하는 사람들의 일정과 챙길 일을 한곳에서 봐요. 일정에 참석자를 지정하면 사람별로 나뉘어 보여요.</p>
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap"><button class="btn line" data-act="new" data-sheet="people">${icon('plus')}사람 추가</button><button class="btn" data-act="new-event">${icon('plus')}일정 추가</button></div>
+    </section>
+    ${(() => { const miss = ['웨딩플래너','신부측 부모님','신랑측 부모님'].filter(r => !DB.people.some(p => p.role === r)); return miss.length ? `<div class="hint-box">${DB.people.length ? '빠르게 추가하기' : '웨딩플래너와 양가 부모님을 먼저 추가해 보세요.'}
+      <div class="chips">${miss.map(r => `<button class="chip" data-act="quick-person" data-role="${r}">+ ${r}</button>`).join('')}</div></div>` : ''; })()}
+    <div class="pcards">${ps.map(card).join('')}</div>
+    <div class="toolbar">
+      <div class="chips" role="group" aria-label="사람으로 거르기">
+        <button class="chip" data-act="who-filter" data-w="all" aria-pressed="${sel === 'all'}">모두</button>
+        ${ps.map(p => `<button class="chip" data-act="who-filter" data-w="${esc(p.id)}" aria-pressed="${sel === p.id}">${esc(p.name)}</button>`).join('')}
+      </div>
+      <div class="seg" role="group" aria-label="보기 방식">
+        <button data-act="people-view" data-v="lane" aria-pressed="${ui.peopleView === 'lane'}">주간 보드</button>
+        <button data-act="people-view" data-v="agenda" aria-pressed="${ui.peopleView === 'agenda'}">일정 목록</button>
+      </div>
+    </div>
+    ${ui.peopleView === 'lane' ? lane : agenda}
+    <section class="sec" style="padding-top:48px">
+      <div class="sec-head"><h2 style="font-size:24px">사람별 챙길 일</h2></div>
+      <div class="todo-cols">${todoCols}</div>
+    </section>
+  </div>`;
+}
+
+/* ---------- photo shoot view ---------- */
+const PHOTO_CHECKS = [
+  { g:'계약·상담 때', items:[['c1','스튜디오 포트폴리오가 우리가 원하는 톤인지 확인'],['c2','촬영 컷 수, 원본 제공 여부, 앨범·액자 구성 확인'],['c3','원본·추가 보정·야외 촬영 등 추가금 항목 확인'],['c4','촬영 소요 시간과 의상(드레스·수트) 벌 수 확인']] },
+  { g:'촬영 한 달 전', items:[['m1','촬영용 드레스 고르기(드레스 투어)'],['m2','헤어·메이크업 시안 레퍼런스 모으기'],['m3','신랑 수트·턱시도 맞춤 또는 대여'],['m4','소품 준비(레터링, 부케, 꽃, 반려동물 동반 여부 등)'],['m5','원하는 포즈·콘셉트 레퍼런스 모아서 공유']] },
+  { g:'촬영 일주일 전', items:[['w1','피부·네일 관리 일정 잡기'],['w2','신랑 이발은 촬영 며칠 전으로 예약'],['w3','촬영 장소·시간표·주차 확인'],['w4','헬퍼비·추가 비용 현장 결제 여부 확인']] },
+  { g:'전날·당일', items:[['d1','드레스용 속옷(누드톤·니플패치 등), 스타킹 챙기기'],['d2','신랑 구두·양말, 액세서리, 반지 챙기기'],['d3','간식·물·빨대, 보조배터리 챙기기'],['d4','전날은 짠 음식 줄이고 충분히 자기'],['d5','메이크업 샵 시작 시간과 작가·헬퍼 연락처 확인']] },
+  { g:'촬영 후', items:[['a1','원본 수령 날짜 확인'],['a2','셀렉 기한과 보정 요청 사항 정리'],['a3','앨범·액자 납품 일정 확인']] }
+];
+function photoHtml() {
+  let checked = [];
+  try { checked = JSON.parse(setting('photoChecks', '[]')) || []; } catch (e) { checked = []; }
+  const all = PHOTO_CHECKS.flatMap(g => g.items);
+  const pct = Math.round(checked.filter(id => all.some(([k]) => k === id)).length / all.length * 100);
+  const date = setting('photo_date');
+  const dd = daysUntil(date);
+  const info = [['촬영일', date ? `${fmtDT(date, setting('photo_time'))}` : '미정'], ['스튜디오', setting('photo_studio') || '미정'], ['드레스', setting('photo_dress') || '미정'], ['헤어·메이크업', setting('photo_makeup') || '미정']];
+  const refs = DB.archive.filter(a => a.category === '웨딩촬영');
+  const evs = DB.events.filter(e => e.kind === '촬영' || e.kind === '피팅' || /촬영|피팅|드레스/.test(e.title)).sort((a, b) => (a.date || '9999').localeCompare(b.date || '9999'));
+  return `<div class="wrap cl photo">
+    <section class="cl-hero">
+      <div>
+        <span class="eyebrow">Photo</span>
+        <h1>웨딩 촬영</h1>
+        <p>촬영 정보, 준비 체크리스트, 콘셉트 레퍼런스를 한곳에 모았어요.</p>
+      </div>
+      <div class="ph-dday">${date ? `<strong>${dday(dd)}</strong><span>촬영까지</span>` : `<button class="btn" data-act="photo-info">촬영일 정하기</button>`}</div>
+    </section>
+
+    <section class="ph-info">
+      <dl>${info.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
+      ${setting('photo_memo') ? `<p class="note">${esc(setting('photo_memo'))}</p>` : ''}
+      <button class="btn line" data-act="photo-info">촬영 정보 편집</button>
+    </section>
+
+    <section class="sec" style="padding-top:48px">
+      <div class="sec-head" style="flex-direction:row;justify-content:space-between;align-items:flex-end;flex-wrap:wrap">
+        <div><h2 style="font-size:24px">촬영 준비 체크리스트</h2><span class="note">체크한 내용은 둘 다 같이 볼 수 있어요</span></div>
+        <div class="ph-prog"><b>${pct}%</b><div class="bar md" style="width:160px"><i style="width:${pct}%"></i></div></div>
+      </div>
+      <div class="ph-groups">${PHOTO_CHECKS.map((g, gi) => `<div class="ph-group">
+        <h3><span class="g-num sm">${gi + 1}</span>${esc(g.g)}</h3>
+        ${g.items.map(([k, t]) => `<label class="ph-item"><input type="checkbox" data-act="photo-check" data-k="${k}" ${checked.includes(k) ? 'checked' : ''}><span>${esc(t)}</span></label>`).join('')}
+      </div>`).join('')}</div>
+    </section>
+
+    <section class="sec" style="padding-top:24px">
+      <div class="sec-head" style="flex-direction:row;justify-content:space-between;align-items:flex-end;flex-wrap:wrap">
+        <h2 style="font-size:24px">촬영·피팅 일정</h2><button class="btn line" data-act="new-event" data-kind="촬영">${icon('plus')}일정 추가</button>
+      </div>
+      ${evs.length ? evs.map(e => `<button class="event" data-act="edit" data-sheet="events" data-id="${esc(e.id)}"><span class="ed">${mmdd(e.date) || '미정'}</span><span class="et">${esc(e.title)}</span><span class="en">${whoTags(whoList(e))} ${esc(e.time || '')}</span></button>`).join('') : '<div class="empty-mini">촬영·피팅 일정이 없어요. 일정 종류를 "촬영"이나 "피팅"으로 저장하면 여기에 모여요.</div>'}
+    </section>
+
+    <section class="sec" style="padding-top:24px">
+      <div class="sec-head" style="flex-direction:row;justify-content:space-between;align-items:flex-end;flex-wrap:wrap">
+        <div><h2 style="font-size:24px">콘셉트 레퍼런스</h2><span class="note">아카이브에서 카테고리를 '웨딩촬영'으로 저장한 정보예요</span></div>
+        <button class="btn line" data-act="new-ref">${icon('plus')}레퍼런스 저장</button>
+      </div>
+      ${refs.length ? `<div class="ref-grid">${refs.map(a => { const img = safeUrl(a.image), link = safeUrl(a.url); return `<article class="ref">
+        <button class="thumb" data-act="edit" data-sheet="archive" data-id="${esc(a.id)}" aria-label="${esc(a.title)} 편집">${img ? `<img src="${esc(img)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : icon('image')}</button>
+        <strong>${esc(a.title)}</strong>${a.memo ? `<small>${esc(a.memo)}</small>` : ''}${link ? `<a class="ext" href="${esc(link)}" target="_blank" rel="noopener noreferrer">${icon('link')}원문</a>` : ''}
+      </article>`; }).join('')}</div>` : '<div class="empty-mini">아직 저장한 레퍼런스가 없어요. 마음에 드는 웨딩 사진 링크를 모아 보세요.</div>'}
+    </section>
+  </div>`;
+}
+function openPhotoInfo() {
+  const fields = [
+    { row:[{ k:'photo_date', label:'촬영일', type:'date' }, { k:'photo_time', label:'시작 시간', type:'time' }] },
+    { k:'photo_studio', label:'스튜디오', ph:'예: ○○ 스튜디오' },
+    { row:[{ k:'photo_dress', label:'드레스샵', ph:'예: ○○ 드레스' }, { k:'photo_makeup', label:'헤어·메이크업', ph:'예: ○○ 메이크업' }] },
+    { k:'photo_memo', label:'메모', type:'textarea' }
+  ];
+  const body = fields.map(f => f.row ? `<div class="two">${f.row.map(x => fieldHtml(x, setting(x.k))).join('')}</div>` : fieldHtml(f, setting(f.k))).join('');
+  showModal('촬영 정보', body, { onSave: async (data) => { for (const [k, v] of Object.entries(data)) if (String(setting(k)) !== String(v)) await setSetting(k, v); toast('촬영 정보를 저장했어요'); } });
+}
+
 /* ---------- checklist view ---------- */
 function activeWedding() {
   const k = setting('activeDate', 'A');
@@ -1521,13 +1812,19 @@ const FORMS = {
     { k:'item', label:'내용', req:true, ph:'예: 웨딩홀 계약금' },
     { row:[{ k:'budgetId', label:'예산 항목', type:'select', opts:() => budgetRows().map(b => [b.id, b.name]) }, { k:'kind', label:'구분', type:'select', opts:KINDS }] },
     { row:[{ k:'amount', label:'금액 (원)', type:'money', req:true }, { k:'date', label:'날짜', type:'date' }] },
+    { k:'payer', label:'결제 수단 (누구 카드)', type:'datalist', opts:() => payerOptions(), ph:'예: 민지 카드' },
     { k:'memo', label:'메모' }
   ]},
   budget: { title: '예산 항목', fields: [
     { k:'name', label:'항목 이름', req:true },
     { row:[{ k:'plan', label:'예산 (원)', type:'money' }, { k:'order', label:'정렬 순서', type:'number' }] }
   ]},
-  tasks: { title: '할 일', fields: [{ k:'title', label:'할 일', req:true }, { row:[{ k:'phase', label:'단계', type:'select', opts:() => PHASES.map(p => [p.k, `${p.name} (${p.when})`]) }, { k:'due', label:'데드라인', type:'date' }] }] },
+  tasks: { title: '할 일', fields: [{ k:'title', label:'할 일', req:true }, { row:[{ k:'phase', label:'단계', type:'select', opts:() => PHASES.map(p => [p.k, `${p.name} (${p.when})`]) }, { k:'due', label:'데드라인', type:'date' }] }, { k:'owner', label:'담당', type:'select', opts:() => [['', '함께 (신랑·신부)'], ...participants().map(p => [p.id, `${p.name} · ${p.role}`])] }] },
+  people: { title: '사람', fields: [
+    { row:[{ k:'name', label:'이름·호칭', req:true, ph:'예: 김○○ 플래너, 신부 어머니' }, { k:'role', label:'관계', type:'select', opts:PERSON_ROLES }] },
+    { k:'phone', label:'연락처', type:'tel', ph:'010-0000-0000' },
+    { k:'memo', label:'메모', type:'textarea', ph:'예: 카톡 선호, 평일 저녁 통화 가능' }
+  ]},
   venues: { title: '웨딩홀', fields: [
     { k:'name', label:'웨딩홀 이름', req:true, ph:'예: 아펠가모 광화문점' },
     { row:[{ k:'hall', label:'홀·층', ph:'예: LL층' }, { k:'ceremonyType', label:'예식 형태', type:'select', opts:CEREMONY_TYPES }] },
@@ -1542,6 +1839,8 @@ const FORMS = {
   events: { title: '일정', fields: [
     { k:'title', label:'일정', req:true, ph:'예: 웨딩홀 투어' },
     { row:[{ k:'date', label:'날짜', type:'date' }, { k:'time', label:'시간', type:'time' }] },
+    { k:'kind', label:'종류', type:'select', opts:EVENT_KINDS },
+    { k:'who', label:'참석자', type:'checks', opts:() => participants().map(p => [p.id, `${p.name} · ${p.role}`]) },
     { k:'note', label:'메모' }
   ]}
 };
@@ -1551,6 +1850,13 @@ function fieldHtml(f, v) {
   if (f.type === 'select') {
     const opts = typeof f.opts === 'function' ? f.opts() : f.opts.map(o => [o, o]);
     input = `<select class="field" id="${id}" name="${f.k}">${opts.map(([ov, ol]) => `<option value="${esc(ov)}" ${String(ov) === String(v ?? '') ? 'selected' : ''}>${esc(ol)}</option>`).join('')}</select>`;
+  } else if (f.type === 'checks') {
+    const opts = typeof f.opts === 'function' ? f.opts() : f.opts.map(o => [o, o]);
+    const cur = String(v || '').split(',').filter(Boolean);
+    return `<fieldset class="checks"><legend>${esc(f.label)}</legend><input type="hidden" name="${f.k}" value="">${opts.map(([ov, ol]) => `<label class="check"><input type="checkbox" name="${f.k}" value="${esc(ov)}" ${cur.includes(String(ov)) ? 'checked' : ''}><span>${esc(ol)}</span></label>`).join('')}</fieldset>`;
+  } else if (f.type === 'datalist') {
+    const opts = typeof f.opts === 'function' ? f.opts() : f.opts;
+    input = `<input class="field" id="${id}" name="${f.k}" list="${id}-list" value="${val}" ${f.ph ? `placeholder="${esc(f.ph)}"` : ''} autocomplete="off"><datalist id="${id}-list">${opts.map(o => `<option value="${esc(o)}">`).join('')}</datalist>`;
   } else if (f.type === 'textarea') {
     input = `<textarea class="field" id="${id}" name="${f.k}">${val}</textarea>`;
   } else if (f.type === 'money') {
@@ -1564,10 +1870,12 @@ function openForm(sheet, rec, preset) {
   const def = FORMS[sheet]; const isNew = !rec;
   rec = rec || { id: uid(), ...(preset || {}) };
   if (isNew) {
-    if (sheet === 'archive') Object.assign(rec, { category: ui.cat !== '전체' ? ui.cat : CATS[0], status: '검토 전', source: SOURCES[0] });
+    if (sheet === 'archive') Object.assign(rec, { category: rec.category || (ui.cat !== '전체' ? ui.cat : CATS[0]), status: '검토 전', source: SOURCES[0] });
     if (sheet === 'expenses') Object.assign(rec, { date: todayStr(), kind: KINDS[0] });
     if (sheet === 'budget') rec.order = DB.budget.length + 1;
     if (sheet === 'venues') Object.assign(rec, { status: '관심', hallType: HALL_TYPES[0], ceremonyType: CEREMONY_TYPES[0] });
+    if (sheet === 'people' && !rec.role) rec.role = PERSON_ROLES[0];
+    if (sheet === 'events' && !rec.kind) rec.kind = EVENT_KINDS[0];
     if (sheet === 'tasks' && !rec.phase) rec.phase = currentPhase(daysUntil(activeWedding().date)) || 'etc';
   }
   const body = def.fields.map(f => f.row ? `<div class="two">${f.row.map(x => fieldHtml(x, rec[x.k])).join('')}</div>` : fieldHtml(f, rec[f.k])).join('');
@@ -1620,7 +1928,8 @@ function showModal(title, bodyHtml, { onSave, onDelete, onOpen, wide, extra }) {
   const form = $('#mform', dlg);
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(form).entries());
+    const fd = new FormData(form), data = {};
+    for (const k of new Set([...fd.keys()])) { const all = fd.getAll(k).map(String); data[k] = all.length > 1 ? all.filter(Boolean).join(',') : all[0]; }
     dlg.close(); onSave(data);
   });
   dlg.querySelectorAll('[data-close]').forEach(b => b.onclick = () => dlg.close());
@@ -1663,12 +1972,26 @@ document.addEventListener('click', (e) => {
   else if (act === 'cal-move') { const [y, m] = ui.calMonth.split('-').map(Number); const d = new Date(y, m - 1 + Number(el.dataset.d), 1); ui.calMonth = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`; renderKeepFocus(); }
   else if (act === 'cal-today') { ui.calMonth = todayStr().slice(0, 7); renderKeepFocus(); }
   else if (act === 'cal-add') openForm('tasks', null, { due: el.dataset.date });
+  else if (act === 'who-filter') { ui.whoFilter = ui.whoFilter === el.dataset.w && el.dataset.w !== 'all' ? 'all' : el.dataset.w; renderKeepFocus(); }
+  else if (act === 'people-view') { ui.peopleView = el.dataset.v; renderKeepFocus(); }
+  else if (act === 'lane-move') { ui.laneOffset = el.dataset.d === '0' ? 0 : ui.laneOffset + Number(el.dataset.d); renderKeepFocus(); }
+  else if (act === 'lane-add') openForm('events', null, { date: el.dataset.date, who: el.dataset.w, kind: EVENT_KINDS[0] });
+  else if (act === 'new-event') openForm('events', null, { kind: el.dataset.kind || EVENT_KINDS[0], who: ui.whoFilter !== 'all' ? ui.whoFilter : '' });
+  else if (act === 'quick-person') openForm('people', null, { role: el.dataset.role, name: el.dataset.role === '웨딩플래너' ? '' : el.dataset.role.replace('측 부모님', ' 부모님') });
+  else if (act === 'parent-tasks') addParentTasks(el.dataset.w);
+  else if (act === 'photo-info') openPhotoInfo();
+  else if (act === 'new-ref') openForm('archive', null, { category: '웨딩촬영' });
   else if (act === 'jump') { e.preventDefault(); const n = document.getElementById(el.dataset.target); if (n) n.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); }
   else if (act === 'load-template') loadTemplate();
   else if (act === 'logout') { localStorage.removeItem(TOKEN_KEY); location.reload(); }
 });
 document.addEventListener('change', (e) => {
   const t = e.target;
+  if (t.dataset.act === 'photo-check') {
+    let c = []; try { c = JSON.parse(setting('photoChecks', '[]')) || []; } catch (er) {}
+    c = t.checked ? [...new Set([...c, t.dataset.k])] : c.filter(x => x !== t.dataset.k);
+    setSetting('photoChecks', JSON.stringify(c)); return;
+  }
   if (t.dataset.act === 'venue-sort') { ui.venueSort = t.value; renderKeepFocus(); return; }
   if (t.dataset.act === 'tier-set') { const q = DB.quotes.find(x => x.id === t.dataset.id); if (q) { store.upsert('quotes', { ...q, tier: t.value }); toast(t.value ? `${q.label}을(를) ${t.value}로 정했어요` : '우선순위를 지웠어요'); } return; }
   if (t.dataset.edit) {
@@ -1702,6 +2025,14 @@ document.addEventListener('keydown', (e) => {
   }
 });
 document.addEventListener('submit', (e) => {
+  if (e.target.dataset.form === 'owner-task') {
+    e.preventDefault();
+    const fd = new FormData(e.target), owner = e.target.dataset.w;
+    const title = String(fd.get('title') || '').trim(); if (!title) return;
+    store.upsert('tasks', { id: uid(), title, due: fd.get('due') || '', done: '', phase: currentPhase(daysUntil(activeWedding().date)) || 'etc', owner });
+    setTimeout(() => { const i = document.getElementById('ot-' + owner); if (i) i.focus(); });
+    return;
+  }
   if (e.target.dataset.form === 'task-phase') {
     e.preventDefault();
     const fd = new FormData(e.target), phase = e.target.dataset.phase;
@@ -1726,8 +2057,8 @@ document.addEventListener('submit', (e) => {
     const fd = new FormData(e.target);
     const amount = num(fd.get('amount'));
     if (!amount) { toast('금액을 입력해 주세요'); return; }
-    ui.lastBudget = String(fd.get('budgetId'));
-    store.upsert('expenses', { id: uid(), budgetId: ui.lastBudget, item: String(fd.get('item')).trim(), amount, kind: fd.get('kind'), date: fd.get('date') || todayStr(), memo: '' });
+    ui.lastBudget = String(fd.get('budgetId')); ui.lastPayer = String(fd.get('payer') || '').trim();
+    store.upsert('expenses', { id: uid(), budgetId: ui.lastBudget, item: String(fd.get('item')).trim(), amount, kind: fd.get('kind'), payer: String(fd.get('payer') || '').trim(), date: fd.get('date') || todayStr(), memo: '' });
     toast(`${won(amount)} 지출을 기록했어요`);
     setTimeout(() => { const n = document.querySelector('[data-form="expense-add"] [name="item"]'); if (n) n.focus(); });
     return;
@@ -1759,6 +2090,16 @@ function renderKeepFocus() {
   else if (ds && ds.act) { const n = document.querySelector(`[data-act="${ds.act}"][data-${ds.act === 'cat' ? 'cat' : 'view'}="${CSS.escape(ds.cat || ds.view || '')}"]`); if (n) n.focus(); }
 }
 
+async function addParentTasks(owner) {
+  const p = personById(owner); if (!p) return;
+  const have = new Set(DB.tasks.filter(t => t.owner === owner).map(t => t.title));
+  const rows = PARENT_TASKS.filter(t => !have.has(t)).map(title => ({ id: uid(), title, due: '', done: '', phase: 'p4', owner }));
+  if (!rows.length) return;
+  DB.tasks.push(...rows); render();
+  if (!isLive()) { saveLocal(); toast(`${p.name}의 챙길 일 ${rows.length}개를 넣었어요`); return; }
+  try { for (const row of rows) await api({ action: 'upsert', sheet: 'tasks', row }); toast(`${p.name}의 챙길 일 ${rows.length}개를 넣었어요`); }
+  catch (e) { toast('일부를 저장하지 못했어요: ' + e.message); await refresh(); }
+}
 async function loadTemplate() {
   const w = activeWedding();
   const have = new Set(DB.tasks.map(t => t.title));
