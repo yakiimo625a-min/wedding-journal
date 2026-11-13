@@ -539,6 +539,23 @@ fieldset.checks legend{font-size:14px;font-weight:500;margin-bottom:6px;padding:
 .ref small{color:var(--ink-3);font-size:12px}
 .wed-fixed{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .wed-fixed strong{font-size:16px}
+/* final venue */
+.fv{margin-top:20px;border:1px solid var(--line);border-left:4px solid var(--positive);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;max-width:560px}
+.fv-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.fv-head h2{margin:0;font-size:18px;font-weight:700;flex:1;min-width:0}
+.fv-head h2 span{font-size:14px;font-weight:500;color:var(--ink-3)}
+.fv-head .btn{height:36px;font-size:13px}
+.fv-grid{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px}
+.fv-grid div{display:flex;justify-content:space-between;gap:8px;font-size:14px;border-bottom:1px solid var(--line-soft);padding-bottom:6px}
+.fv-grid div.wide{grid-column:1/-1;justify-content:flex-start;gap:16px}
+.fv-grid dt{color:var(--ink-3);white-space:nowrap}
+.fv-grid dd{margin:0;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.fv-grid div.wide dd{text-align:left;font-weight:500}
+.fv-memo{margin:0;font-size:13px;color:var(--ink-2);line-height:1.5}
+.fv-links{display:flex;gap:16px;flex-wrap:wrap}
+.fv-empty{margin-top:20px;display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 18px;border:1px dashed #BDBDBD;border-radius:12px;background:transparent;color:var(--ink-2);font-weight:600;cursor:pointer}
+.fv-empty:hover{border-color:var(--ink);color:var(--ink)}
+@media (max-width:420px){.fv-grid{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
@@ -868,6 +885,7 @@ function render() {
       ${confirmed ? `<div class="wed-fixed"><span class="badge primary">예식일 확정</span><strong>${esc(fmtDT(wDate, wTime))}</strong><button class="linkish" data-act="settings">변경</button></div>` : `<div class="chips" role="group" aria-label="D-day 기준 예식일">
         ${dates.map(x => `<button class="chip" data-act="date" data-k="${x.k}" aria-pressed="${x === cur}">${esc(x.label || x.date)}</button>`).join('')}
       </div>`}
+      ${finalVenueHtml()}
     </div>
     <div class="kpis">${kpis.map(k => `<div class="kpi"><span>${k.href ? `<a href="${k.href}" class="kpi-link">${esc(k.label)}</a>` : esc(k.label)}</span><strong>${esc(k.value)}</strong><div class="bar ${k.pct > 100 ? 'over' : ''}"><i style="width:${Math.min(100, Math.max(0, k.pct))}%"></i></div><span>${esc(k.sub)}</span></div>`).join('')}</div>
   </section></div>
@@ -1707,6 +1725,90 @@ function openPhotoInfo() {
   showModal('촬영 정보', body, { onSave: async (data) => { for (const [k, v] of Object.entries(data)) if (String(setting(k)) !== String(v)) await setSetting(k, v); toast('촬영 정보를 저장했어요'); } });
 }
 
+/* ---------- final (contracted) venue ---------- */
+const FV_KEYS = ['fv_quote','fv_name','fv_hall','fv_address','fv_guarantee','fv_amount','fv_deposit','fv_contact','fv_phone','fv_url','fv_memo'];
+function finalVenue() {
+  const q = DB.quotes.find(x => x.id === setting('fv_quote'));
+  const v = q ? DB.venues.find(x => x.id === q.venueId) : null;
+  const name = setting('fv_name') || (v ? v.name : '');
+  if (!name) return null;
+  return {
+    q, v, name,
+    hall: setting('fv_hall') || (v ? [v.hall, v.ceremonyType].filter(Boolean).join(' / ') : ''),
+    address: setting('fv_address'),
+    guarantee: setting('fv_guarantee') || (q ? q.guarantee : ''),
+    amount: val(setting('fv_amount')) !== null ? num(setting('fv_amount')) : (q ? quoteCalc(q).final : 0),
+    deposit: val(setting('fv_deposit')) !== null ? num(setting('fv_deposit')) : (q ? val(q.deposit) : null),
+    contact: setting('fv_contact'), phone: setting('fv_phone'), url: setting('fv_url'), memo: setting('fv_memo')
+  };
+}
+function finalVenueHtml() {
+  const f = finalVenue();
+  if (!f) return `<button class="fv-empty" data-act="final-venue">${icon('plus')}계약한 웨딩홀 정보 넣기</button>`;
+  const tel = String(f.phone || '').replace(/[^\d+]/g, '');
+  const map = f.address || f.name;
+  const link = safeUrl(f.url);
+  return `<article class="fv">
+    <div class="fv-head">
+      <span class="badge positive">계약 완료</span>
+      <h2>${esc(f.name)}${f.hall ? ` <span>${esc(f.hall)}</span>` : ''}</h2>
+      <button class="btn ghost" data-act="final-venue">편집</button>
+    </div>
+    <dl class="fv-grid">
+      ${f.address ? `<div class="wide"><dt>주소</dt><dd>${esc(f.address)}</dd></div>` : ''}
+      <div><dt>보증인원</dt><dd>${num(f.guarantee) ? num(f.guarantee).toLocaleString('ko-KR') + '명' : '—'}</dd></div>
+      <div><dt>계약 금액</dt><dd>${f.amount ? wonFull(f.amount) : '—'}</dd></div>
+      <div><dt>계약금</dt><dd>${f.deposit !== null && f.deposit !== undefined ? wonFull(f.deposit) : '—'}</dd></div>
+      <div><dt>담당자</dt><dd>${esc(f.contact || '—')}</dd></div>
+    </dl>
+    ${f.memo ? `<p class="fv-memo">${esc(f.memo)}</p>` : ''}
+    <div class="fv-links">
+      <a class="ext" href="https://map.naver.com/p/search/${encodeURIComponent(map)}" target="_blank" rel="noopener noreferrer">${icon('link')}네이버 지도</a>
+      ${tel ? `<a class="ext" href="tel:${esc(tel)}">${icon('link')}담당자 전화</a>` : ''}
+      ${link ? `<a class="ext" href="${esc(link)}" target="_blank" rel="noopener noreferrer">${icon('link')}웨딩홀 페이지</a>` : ''}
+      ${f.q ? `<a class="ext" href="#/venues">${icon('link')}견적 보기</a>` : ''}
+    </div>
+  </article>`;
+}
+function openFinalVenue() {
+  const quoteOpts = [['', '견적 없이 직접 입력'], ...DB.quotes.map(q => { const v = DB.venues.find(x => x.id === q.venueId); return [q.id, `${v ? v.name : '웨딩홀'} · ${q.label || '타임'}${q.date ? ' (' + fmtDT(q.date, q.time) + ')' : ''}`]; })];
+  const fields = [
+    { k:'fv_quote', label:'비교 탭의 견적에서 고르기', type:'select', opts:() => quoteOpts, hint:'고르면 홀 이름·보증인원·금액이 견적 기준으로 채워져요. 아래에서 실제 계약 내용으로 고칠 수 있어요.' },
+    { row:[{ k:'fv_name', label:'웨딩홀 이름', ph:'예: 아펠가모 광화문점' }, { k:'fv_hall', label:'홀·예식 형태', ph:'예: LL층 / 분리예식' }] },
+    { k:'fv_address', label:'주소', ph:'하객 안내용 주소' },
+    { row:[{ k:'fv_guarantee', label:'계약 보증인원 (명)', type:'number' }, { k:'fv_amount', label:'최종 계약 금액 (원)', type:'money' }] },
+    { row:[{ k:'fv_deposit', label:'계약금 (원)', type:'money' }, { k:'fv_contact', label:'담당자', ph:'예: 이○○ 실장' }] },
+    { row:[{ k:'fv_phone', label:'담당자 연락처', type:'tel', ph:'02-000-0000' }, { k:'fv_url', label:'웨딩홀 링크', type:'url', ph:'https://' }] },
+    { k:'fv_memo', label:'메모', type:'textarea', ph:'예: 잔금 예식 2주 전, 시식 1월 중' }
+  ];
+  const body = fields.map(f => f.row ? `<div class="two">${f.row.map(x => fieldHtml(x, setting(x.k))).join('')}</div>` : fieldHtml(f, setting(f.k))).join('');
+  showModal('계약한 웨딩홀', body, {
+    wide: true,
+    onOpen: (dlg) => {
+      const sel = $('#f-fv_quote', dlg);
+      sel.addEventListener('change', () => {
+        const q = DB.quotes.find(x => x.id === sel.value); if (!q) return;
+        const v = DB.venues.find(x => x.id === q.venueId) || {};
+        const put = (id, value, money) => { const el = $('#' + id, dlg); if (el) el.value = value === '' || value === null || value === undefined ? '' : (money ? num(value).toLocaleString('ko-KR') : value); };
+        put('f-fv_name', v.name || ''); put('f-fv_hall', [v.hall, v.ceremonyType].filter(Boolean).join(' / '));
+        put('f-fv_guarantee', q.guarantee); put('f-fv_amount', quoteCalc(q).final || '', true); put('f-fv_deposit', val(q.deposit), true);
+        if (v.url && !$('#f-fv_url', dlg).value) put('f-fv_url', v.url);
+      });
+    },
+    onSave: async (data) => {
+      for (const k of FV_KEYS) {
+        let v2 = data[k] ?? '';
+        if (k === 'fv_amount' || k === 'fv_deposit') v2 = v2 === '' ? '' : String(num(v2));
+        if (String(setting(k)) !== String(v2)) await setSetting(k, v2);
+      }
+      const q = DB.quotes.find(x => x.id === data.fv_quote);
+      const v = q && DB.venues.find(x => x.id === q.venueId);
+      if (v && v.status !== '계약') store.upsert('venues', { ...v, status: '계약' });
+      toast('계약한 웨딩홀 정보를 저장했어요');
+    }
+  });
+}
+
 /* ---------- checklist view ---------- */
 function activeWedding() {
   if (setting('weddingDate')) return { label: '결혼식', date: setting('weddingDate'), time: setting('weddingTime') };
@@ -1988,6 +2090,7 @@ document.addEventListener('click', (e) => {
   else if (act === 'quick-person') openForm('people', null, { role: el.dataset.role, name: el.dataset.role === '웨딩플래너' ? '' : el.dataset.role.replace('측 부모님', ' 부모님') });
   else if (act === 'parent-tasks') addParentTasks(el.dataset.w);
   else if (act === 'photo-info') openPhotoInfo();
+  else if (act === 'final-venue') openFinalVenue();
   else if (act === 'new-ref') openForm('archive', null, { category: '웨딩촬영' });
   else if (act === 'jump') { e.preventDefault(); const n = document.getElementById(el.dataset.target); if (n) n.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); }
   else if (act === 'load-template') loadTemplate();
